@@ -3,24 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>One-Stop Tech Services</title>
-  <link rel="stylesheet" href="/styles/services.css" />
+  <title>Our Services | Neider-Ball Designs</title>
+
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/services.css" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Scripts -->
+  <script defer src="https://unpkg.com/scrollreveal"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+  <script defer src="../scripts/main.js"></script>
+  <script defer src="../scripts/services.js"></script>
 </head>
+
 <body>
-  <header>
-    <h1>One-Stop Tech Services</h1>
-    <p>Web Development • Automation • Retainer Support</p>
+  <header class="header">
+    <a href="/index.html" class="header__logo">NB Designs
+    </a>
+    <nav class="nav">
+      <ul class="nav__list">
+        <li><a href="../index.html#about" class="nav__link">About</a></li>
+        <li><a href="../index.html#services" class="nav__link">Web Packages</a></li>
+        <li><a href="../index.html#contact" class="nav__link">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main class="service-grid" id="services">
-    <!-- Service cards are injected here via script.js -->
+  <section class="hero" style="padding: 6rem 2rem 3rem;">
+    <div class="hero__content">
+      <h1 class="hero__title">Our Tech Solutions</h1>
+      <p class="hero__subtitle">Automations, Development, Support — everything you need in one place.</p>
+    </div>
+  </section>
+
+  <main class="service-grid container" id="services">
+    <!-- Dynamic service cards will be injected here by services.js -->
   </main>
 
-  <footer>
-    <p>&copy; 2025 Neiderball Designs. All rights reserved.</p>
-  </footer>
+  <div style="text-align:center; margin: 4rem 0;">
+    <a href="../index.html" class="btn btn--secondary">← Back to Home</a>
+  </div>
 
-  <script src="/scripts/services.js"></script>
+  <footer class="footer">
+    <p class="footer__text">© 2025 Neider-Ball Designs | Gulfport, MS</p>
+  </footer>
 </body>
 </html>

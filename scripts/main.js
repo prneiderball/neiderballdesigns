@@ -1,13 +1,223 @@
-      document.addEventListener("DOMContentLoaded", function () {
-        ScrollReveal().reveal(".section-title", {
-          delay: 200,
-          duration: 800,
-          distance: "20px",
-          origin: "bottom",
-          easing: "ease-in-out",
+document.addEventListener("DOMContentLoaded", () => {
+  // === Particle System Module ===
+  class Particle {
+    constructor(canvas) {
+      this.canvas = canvas;
+      this.ctx = canvas.getContext("2d");
+      this.reset();
+    }
+
+    reset() {
+      this.x = Math.random() * this.canvas.width;
+      this.y = Math.random() * this.canvas.height;
+      this.size = Math.random() * 3 + 1;
+      this.speedX = Math.random() * 2 - 1;
+      this.speedY = Math.random() * 2 - 1;
+      this.color = `hsl(${Math.random() * 360}, 70%, 50%)`;
+    }
+
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      if (this.size > 0.2) this.size -= 0.01;
+      if (this.x < 0 || this.x > this.canvas.width) this.speedX *= -1;
+      if (this.y < 0 || this.y > this.canvas.height) this.speedY *= -1;
+    }
+
+    draw() {
+      this.ctx.fillStyle = this.color;
+      this.ctx.beginPath();
+      this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      this.ctx.fill();
+    }
+  }
+
+  class ParticleSystem {
+    constructor(selector, numParticles = 100) {
+      this.canvas = document.querySelector(selector);
+      if (!this.canvas) {
+        console.error(`Canvas element '${selector}' not found.`);
+        return;
+      }
+      this.ctx = this.canvas.getContext("2d");
+      this.particles = [];
+      this.numParticles = numParticles;
+
+      this.resizeCanvas();
+      this.initParticles();
+      this.animate();
+
+      window.addEventListener("resize", () => this.onResize());
+    }
+
+    resizeCanvas() {
+      this.canvas.width = window.innerWidth;
+      this.canvas.height = window.innerHeight;
+    }
+
+    initParticles() {
+      this.particles = [];
+      for (let i = 0; i < this.numParticles; i++) {
+        this.particles.push(new Particle(this.canvas));
+      }
+    }
+
+    onResize() {
+      this.resizeCanvas();
+      this.initParticles();
+    }
+
+    animate() {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      this.particles.forEach((p, i) => {
+        p.update();
+        p.draw();
+
+        for (let j = i + 1; j < this.particles.length; j++) {
+          const dx = p.x - this.particles[j].x;
+          const dy = p.y - this.particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 100) {
+            this.ctx.beginPath();
+            this.ctx.strokeStyle = `rgba(212,175,55,${1 - distance / 100})`;
+            this.ctx.lineWidth = 0.5;
+            this.ctx.moveTo(p.x, p.y);
+            this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
+            this.ctx.stroke();
+          }
+        }
+
+        if (p.size <= 0.2) {
+          this.particles.splice(i, 1);
+          this.particles.push(new Particle(this.canvas));
+        }
+      });
+
+      requestAnimationFrame(() => this.animate());
+    }
+  }
+
+  // === Initialize Particle Canvas ===
+  new ParticleSystem(".hero-canvas");
+
+  // === ScrollReveal Animation ===
+  if (typeof ScrollReveal !== "undefined") {
+    ScrollReveal().reveal(".section-title", {
+      delay: 400,
+      duration: 1200,
+      distance: "40px",
+      origin: "bottom",
+      easing: "ease-out",
+    });
+  }
+
+  // === GSAP Hero Content Animation ===
+  if (typeof gsap !== "undefined") {
+    gsap.set(".hero__content", { zIndex: 2 });
+
+    const tl = gsap.timeline();
+    tl.from(".hero__title", {
+      opacity: 0,
+      y: 60,
+      duration: 1.5,
+      ease: "elastic.out(1, 0.5)",
+    })
+      .from(".hero__subtitle", {
+        opacity: 0,
+        y: 40,
+        duration: 1.2,
+        ease: "power2.out",
+      }, "-=0.5")
+      .from(".btn--primary", {
+        opacity: 0,
+        scale: 0.9,
+        y: 30,
+        duration: 1,
+        ease: "back.out(1.7)",
+      }, "-=0.3")
+      .to(".hero__title", {
+        textShadow: "0 0 40px rgba(0, 212, 255, 0.7)",
+        duration: 1,
+        yoyo: true,
+        repeat: -1,
+      }, "-=0.5");
+
+    if (typeof ScrollTrigger !== "undefined") {
+      gsap.utils.toArray(".service-card").forEach(card => {
+        ScrollTrigger.create({
+          trigger: card,
+          start: "top 85%",
+          onEnter: () => gsap.fromTo(
+            card,
+            { opacity: 0, rotationX: 90, y: 80 },
+            { opacity: 1, rotationX: 0, y: 0, duration: 1.2, ease: "back.out(1.7)" }
+          ),
         });
 
-        gsap.from(".hero__title", { opacity: 0, y: -50, duration: 1 });
-        gsap.from(".hero__subtitle", { opacity: 0, y: 20, duration: 1, delay: 0.3 });
-        gsap.from(".btn--primary", { opacity: 0, scale: 0.9, duration: 1, delay: 0.5 });
+        card.addEventListener("mouseenter", () => {
+          gsap.to(card, {
+            scale: 1.1,
+            rotationY: 10,
+            boxShadow: "0 25px 60px rgba(0, 212, 255, 0.5)",
+            duration: 0.5,
+            ease: "power2.out",
+          });
+        });
+
+        card.addEventListener("mouseleave", () => {
+          gsap.to(card, {
+            scale: 1,
+            rotationY: 0,
+            boxShadow: "0 20px 50px rgba(212, 175, 55, 0.3)",
+            duration: 0.5,
+            ease: "power2.inOut",
+          });
+        });
       });
+    }
+
+    const inputs = document.querySelectorAll(".contact__input, .contact__textarea");
+    inputs.forEach(input => {
+      input.addEventListener("focus", function () {
+        gsap.to(this, {
+          scale: 1.05,
+          borderColor: "var(--highlight-color)",
+          boxShadow: "0 0 25px rgba(0, 212, 255, 0.6)",
+          duration: 0.3,
+        });
+      });
+      input.addEventListener("blur", function () {
+        gsap.to(this, {
+          scale: 1,
+          borderColor: "rgba(212, 175, 55, 0.3)",
+          boxShadow: "none",
+          duration: 0.3,
+        });
+      });
+    });
+
+    // === Smooth Scroll Navigation ===
+    if (typeof ScrollToPlugin !== "undefined") {
+      document.querySelectorAll(".nav__link").forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (!target) return;
+
+          gsap.to(window, {
+            duration: 1.2,
+            scrollTo: { y: target, offsetY: 80 },
+            onStart: () => gsap.to(".header", { y: "-10px", duration: 0.5, ease: "power1.out" }),
+            onComplete: () => gsap.to(".header", { y: "0", duration: 0.5, ease: "power1.in" }),
+          });
+        });
+      });
+    } else {
+      console.warn("GSAP ScrollToPlugin not loaded.");
+    }
+  } else {
+    console.warn("GSAP not loaded.");
+  }
+});

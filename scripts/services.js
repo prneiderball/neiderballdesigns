@@ -19,7 +19,7 @@ const services = [
   },
   {
     icon: 'fa-globe',
-    title: 'Basic Website',
+    title: 'Custom Website',
     price: '$1,500',
     desc: '5–7 page site, SEO-ready, responsive & easy to maintain.'
   },
@@ -30,21 +30,15 @@ const services = [
     desc: 'Custom app with key features, integrations & support.'
   },
   {
-    icon: 'fa-laptop-code',
-    title: 'Monthly Dev Plan',
-    price: '$1,200/mo',
-    desc: 'Hosting support, bug fixes, and small features (~20 hrs).'  
-  },
-  {
     icon: 'fa-shield-halved',
     title: 'Tech Watchdog (Retainer)',
-    price: '$900/mo',
+    price: '$500/mo',
     desc: '5 hrs/month for strategy, fixes, and fast email support.'
   },
   {
     icon: 'fa-sitemap',
-    title: 'Tech Operations (Retainer)',
-    price: '$1,800/mo',
+    title: 'Growth Accelerator (Retainer)',
+    price: '$1,000/mo',
     desc: '12 hrs/month of dev work, automation & priority response.'
   },
   {
@@ -56,19 +50,19 @@ const services = [
   {
     icon: 'fa-paper-plane',
     title: 'Starter Template',
-    price: '$400',
-    desc: '3–4 section landing page with clean design and 72-hour delivery.'
+    price: '$350',
+    desc: 'up to section landing page with clean design and 72-hour delivery.'
   },
   {
     icon: 'fa-layer-group',
     title: 'Pro Template',
-    price: '$900',
+    price: '$500',
     desc: 'Multi-page site with animations and 5-day delivery.'
   },
   {
     icon: 'fa-gem',
     title: 'Top Tier Template',
-    price: '$1,500',
+    price: '$750',
     desc: 'Fully responsive, premium JS/CSS, delivered in 7 days.'
   }
 ];
