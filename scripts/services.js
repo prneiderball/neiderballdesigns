@@ -25,39 +25,39 @@ const services = [
   },
   {
     icon: 'fa-mobile-screen',
-    title: 'Phone/Web App MVP Build',
+    title: 'Phone/Web App Build',
     price: '$4,500',
     desc: 'Custom app with key features, integrations & support.'
   },
   {
     icon: 'fa-shield-halved',
-    title: 'Tech Watchdog (Retainer)',
+    title: 'Starter Retainer',
     price: '$500/mo',
-    desc: '5 hrs/month for strategy, fixes, and fast email support.'
+    desc: '5 hrs/month of essential support, strategy, and quick-turn fixes. Ideal for early-stage stability.'
   },
   {
     icon: 'fa-sitemap',
-    title: 'Growth Accelerator (Retainer)',
+    title: 'Pro Retainer',
     price: '$1,000/mo',
-    desc: '12 hrs/month of dev work, automation & priority response.'
+    desc: '12 hrs/month for development, automation, and priority advisory. Perfect for growing teams.'
   },
   {
     icon: 'fa-rocket',
-    title: 'Growth Accelerator (Retainer)',
-    price: '$3,200/mo',
-    desc: '25+ hrs/month: full-service tech & growth support.'
+    title: 'Premium Retainer',
+    price: 'Starting from $2100/mo',
+    desc: '25+ hrs/month of full-service dev, tech strategy, and growth support. Your embedded tech team.'
   },
   {
     icon: 'fa-paper-plane',
     title: 'Starter Template',
     price: '$350',
-    desc: 'up to section landing page with clean design and 72-hour delivery.'
+    desc: 'up to 5 section landing page with clean design and 72-hour delivery.'
   },
   {
     icon: 'fa-layer-group',
     title: 'Pro Template',
     price: '$500',
-    desc: 'Multi-page site with animations and 5-day delivery.'
+    desc: 'two-page site with animations and 5-day delivery.'
   },
   {
     icon: 'fa-gem',
