@@ -1,4 +1,22 @@
 const services = [
+    {
+    icon: 'fa-paper-plane',
+    title: 'Starter Template',
+    price: '$350',
+    desc: 'up to 5 section landing page with clean design and 72-hour delivery.'
+  },
+  {
+    icon: 'fa-layer-group',
+    title: 'Pro Template',
+    price: '$500',
+    desc: 'two-page site with animations and 5-day delivery.'
+  },
+  {
+    icon: 'fa-gem',
+    title: 'Premium Template',
+    price: '$750',
+    desc: 'Fully responsive, premium JS/CSS, delivered in 7 days.'
+  },
   {
     icon: 'fa-robot',
     title: 'Starter Automations',
@@ -46,24 +64,6 @@ const services = [
     title: 'Premium Retainer',
     price: 'Starting from $2100/mo',
     desc: '25+ hrs/month of full-service dev, tech strategy, and growth support. Your embedded tech team.'
-  },
-  {
-    icon: 'fa-paper-plane',
-    title: 'Starter Template',
-    price: '$350',
-    desc: 'up to 5 section landing page with clean design and 72-hour delivery.'
-  },
-  {
-    icon: 'fa-layer-group',
-    title: 'Pro Template',
-    price: '$500',
-    desc: 'two-page site with animations and 5-day delivery.'
-  },
-  {
-    icon: 'fa-gem',
-    title: 'Top Tier Template',
-    price: '$750',
-    desc: 'Fully responsive, premium JS/CSS, delivered in 7 days.'
   }
 ];
 
