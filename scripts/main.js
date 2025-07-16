@@ -1,106 +1,138 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // === Particle System Module ===
-  class Particle {
-    constructor(canvas) {
-      this.canvas = canvas;
-      this.ctx = canvas.getContext("2d");
-      this.reset();
+class Particle {
+  constructor(canvas) {
+    this.canvas = canvas;
+    this.ctx = canvas.getContext("2d");
+    this.reset();
+  }
+
+  reset() {
+    this.x = Math.random() * this.canvas.width;
+    this.y = Math.random() * this.canvas.height;
+    this.size = Math.random() * 3 + 1;
+    this.speedX = Math.random() * 2 - 1;
+    this.speedY = Math.random() * 2 - 1;
+    this.color = `hsl(${Math.random() * 360}, 70%, 50%)`;
+  }
+
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    if (this.size > 0.2) this.size -= 0.01;
+
+    if (this.x < 0 || this.x > this.canvas.width) this.speedX *= -1;
+    if (this.y < 0 || this.y > this.canvas.height) this.speedY *= -1;
+  }
+
+  draw() {
+    this.ctx.fillStyle = this.color;
+    this.ctx.beginPath();
+    this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    this.ctx.fill();
+  }
+}
+
+class ParticleSystem {
+  constructor(selector, numParticles = 100) {
+    this.canvas = document.querySelector(selector);
+    if (!this.canvas) {
+      console.error(`Canvas element '${selector}' not found.`);
+      return;
     }
+    this.ctx = this.canvas.getContext("2d");
+    this.particles = [];
+    this.numParticles = numParticles;
+    this.cellSize = 100;
+    this.grid = {};
 
-    reset() {
-      this.x = Math.random() * this.canvas.width;
-      this.y = Math.random() * this.canvas.height;
-      this.size = Math.random() * 3 + 1;
-      this.speedX = Math.random() * 2 - 1;
-      this.speedY = Math.random() * 2 - 1;
-      this.color = `hsl(${Math.random() * 360}, 70%, 50%)`;
-    }
+    this.resizeCanvas();
+    this.initParticles();
+    this.animate();
 
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
+    window.addEventListener("resize", () => this.onResize());
+  }
 
-      if (this.size > 0.2) this.size -= 0.01;
-      if (this.x < 0 || this.x > this.canvas.width) this.speedX *= -1;
-      if (this.y < 0 || this.y > this.canvas.height) this.speedY *= -1;
-    }
+  resizeCanvas() {
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
+  }
 
-    draw() {
-      this.ctx.fillStyle = this.color;
-      this.ctx.beginPath();
-      this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      this.ctx.fill();
+  initParticles() {
+    this.particles = [];
+    for (let i = 0; i < this.numParticles; i++) {
+      this.particles.push(new Particle(this.canvas));
     }
   }
 
-  class ParticleSystem {
-    constructor(selector, numParticles = 100) {
-      this.canvas = document.querySelector(selector);
-      if (!this.canvas) {
-        console.error(`Canvas element '${selector}' not found.`);
-        return;
+  onResize() {
+    this.resizeCanvas();
+    this.initParticles();
+  }
+
+  updateSpatialGrid() {
+    this.grid = {};
+    for (let p of this.particles) {
+      const cellX = Math.floor(p.x / this.cellSize);
+      const cellY = Math.floor(p.y / this.cellSize);
+      const key = `${cellX},${cellY}`;
+      if (!this.grid[key]) this.grid[key] = [];
+      this.grid[key].push(p);
+    }
+  }
+
+  getNeighborParticles(cellX, cellY) {
+    const neighbors = [];
+    for (let dx = -1; dx <= 1; dx++) {
+      for (let dy = -1; dy <= 1; dy++) {
+        const key = `${cellX + dx},${cellY + dy}`;
+        if (this.grid[key]) neighbors.push(...this.grid[key]);
       }
-      this.ctx = this.canvas.getContext("2d");
-      this.particles = [];
-      this.numParticles = numParticles;
-
-      this.resizeCanvas();
-      this.initParticles();
-      this.animate();
-
-      window.addEventListener("resize", () => this.onResize());
     }
+    return neighbors;
+  }
 
-    resizeCanvas() {
-      this.canvas.width = window.innerWidth;
-      this.canvas.height = window.innerHeight;
-    }
+  animate() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.updateSpatialGrid();
 
-    initParticles() {
-      this.particles = [];
-      for (let i = 0; i < this.numParticles; i++) {
+    for (let i = 0; i < this.particles.length; i++) {
+      const p = this.particles[i];
+      p.update();
+      p.draw();
+
+      const cellX = Math.floor(p.x / this.cellSize);
+      const cellY = Math.floor(p.y / this.cellSize);
+      const neighbors = this.getNeighborParticles(cellX, cellY);
+
+      for (let j = 0; j < neighbors.length; j++) {
+        const other = neighbors[j];
+        if (other === p) continue;
+        const dx = p.x - other.x;
+        const dy = p.y - other.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < 100) {
+          this.ctx.beginPath();
+          this.ctx.strokeStyle = `rgba(212,175,55,${1 - distance / 100})`;
+          this.ctx.lineWidth = 0.5;
+          this.ctx.moveTo(p.x, p.y);
+          this.ctx.lineTo(other.x, other.y);
+          this.ctx.stroke();
+        }
+      }
+
+      if (p.size <= 0.2) {
+        this.particles.splice(i, 1);
         this.particles.push(new Particle(this.canvas));
       }
     }
 
-    onResize() {
-      this.resizeCanvas();
-      this.initParticles();
-    }
-
-    animate() {
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-      this.particles.forEach((p, i) => {
-        p.update();
-        p.draw();
-
-        for (let j = i + 1; j < this.particles.length; j++) {
-          const dx = p.x - this.particles[j].x;
-          const dy = p.y - this.particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < 100) {
-            this.ctx.beginPath();
-            this.ctx.strokeStyle = `rgba(212,175,55,${1 - distance / 100})`;
-            this.ctx.lineWidth = 0.5;
-            this.ctx.moveTo(p.x, p.y);
-            this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
-            this.ctx.stroke();
-          }
-        }
-
-        if (p.size <= 0.2) {
-          this.particles.splice(i, 1);
-          this.particles.push(new Particle(this.canvas));
-        }
-      });
-
-      requestAnimationFrame(() => this.animate());
-    }
+    requestAnimationFrame(() => this.animate());
   }
+}
 
-  // === Initialize Particle Canvas ===
-  new ParticleSystem(".hero-canvas");
+new ParticleSystem(".hero-canvas");
+
 
   // === ScrollReveal Animation ===
   if (typeof ScrollReveal !== "undefined") {
