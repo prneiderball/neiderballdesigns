@@ -38,14 +38,14 @@ const services = [
   {
     icon: 'fa-globe',
     title: 'Custom Website',
-    price: '$1,500',
-    desc: '5–7 page site, SEO-ready, responsive & easy to maintain.'
+    price: 'Starting from $1,000',
+    desc: 'Custom websites built to match your brand, goals, and vision—fully responsive, fast, and easy to manage.'
   },
   {
     icon: 'fa-mobile-screen',
     title: 'Phone/Web App Build',
     price: '$4,500',
-    desc: 'Custom app with key features, integrations & support.'
+    desc: 'Custom app with 3 key features, integrations & 1 month of support.'
   },
   {
     icon: 'fa-shield-halved',
@@ -63,7 +63,7 @@ const services = [
     icon: 'fa-rocket',
     title: 'Premium Retainer',
     price: 'Starting from $2100/mo',
-    desc: '25+ hrs/month of full-service dev, tech strategy, and growth support. Your embedded tech team.'
+    desc: '25+ hrs/month of full-service dev, tech strategy, and growth support. Your embedded software engineer.'
   }
 ];
 
