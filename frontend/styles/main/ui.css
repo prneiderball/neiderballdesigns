@@ -1,0 +1,80 @@
+/* =========================
+    Buttons
+   ========================= */
+.btn {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-tech);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 1.2rem;
+  padding: 1.2rem 2.5rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  overflow: hidden;
+  text-decoration: none;
+  z-index: 1;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: 0;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn--primary {
+  background: linear-gradient(45deg, var(--primary-color), var(--highlight-color));
+  color: var(--background-color);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.6);
+}
+
+.btn--primary:hover {
+  background: linear-gradient(45deg, #C19A2B, #00A3C9);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 196, 239, 0.7);
+}
+
+.btn--secondary {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.btn--secondary:hover {
+  background: rgba(212, 175, 55, 0.15);
+  box-shadow: 0 0 30px rgba(0, 196, 239, 0.4);
+}
+
+.btn-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem; 
+}
+
+
+/* =========================
+    About Section
+   ========================= */
+.about__text {
+  font-size: 1.3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: var(--font-family);
+  line-height: 1.9;
+}
