@@ -25,13 +25,10 @@
 
 <body>
   <header class="header">
-    <a href="/index.html" class="header__logo">NB Designs
-    </a>
-    <nav class="nav">
+    <a href="../../index.html" class="header__logo">NB Designs</a>
+    <nav class="nav" aria-label="Main Navigation">
       <ul class="nav__list">
-        <li><a href="../../index.html#hero" class="nav__link">Home</a></li>
-        <li><a href="../index.html#services" class="nav__link">Web Packages</a></li>
-        <li><a href="../index.html#contact" class="nav__link">Contact</a></li>
+        <li><a href="../../index.html" class="nav__link">Home</a></li>
       </ul>
     </nav>
   </header>
@@ -43,15 +40,25 @@
     </div>
   </section>
 
-  <main class="service-grid container" id="services">
-    <!-- Dynamic service cards will be injected here by services.js -->
+  <section class="filters container">
+    <div id="filter-buttons" class="filter-controls" role="group" aria-label="Filter Services">
+      <button class="filter-button active" data-filter="all">All</button>
+      <button class="filter-button" data-filter="template">Templates</button>
+      <button class="filter-button" data-filter="automation">Automations</button>
+      <button class="filter-button" data-filter="custom">Custom</button>
+      <button class="filter-button" data-filter="retainer">Retainers</button>
+    </div>
+  </section>
+
+  <main class="service-grid container" id="services" role="main" aria-live="polite">
+    <!-- Dynamic service cards are injected here via JS with classes like `.service-card--template` -->
   </main>
 
-  <div style="text-align:center; margin: 4rem 0;">
-    <a href="../index.html" class="btn btn--secondary">← Back to Home</a>
+  <div class="back-home">
+    <a href="../../index.html" class="btn btn--secondary">← Back to Home</a>
   </div>
 
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <p class="footer__text">© 2025 Neider-Ball Designs | Gulfport, MS</p>
   </footer>
 </body>

@@ -1,3 +1,14 @@
+:root {
+  --font-family: 'Segoe UI', sans-serif;
+  --font-tech: 'Orbitron', sans-serif;
+  --primary-color: #D4AF37;
+  --accent-color: #00C4EF;
+  --highlight-color: #FFD700;
+  --background-color: #0F1415;
+  --text-color: #EDEDED;
+  --transition-speed: 0.3s;
+}
+
 body {
   margin: 0;
   font-family: var(--font-family), serif;
@@ -28,6 +39,42 @@ header p {
   color: var(--accent-color);
 }
 
+/* Filter Controls */
+.filter-controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.filter-controls button {
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 999px;
+  background-color: rgba(212, 175, 55, 0.1);
+  color: var(--primary-color);
+  font-weight: bold;
+  font-family: var(--font-tech);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.filter-controls button:hover {
+  background-color: var(--primary-color);
+  color: #0F1415;
+  transform: scale(1.05);
+}
+
+.filter-controls button.active {
+  background-color: var(--accent-color);
+  color: #0F1415;
+}
+
 .service-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -47,6 +94,8 @@ header p {
   position: relative;
   transition: all var(--transition-speed) ease;
   overflow: hidden;
+  opacity: 1;
+  transform: scale(1);
 }
 
 .service-card:hover {
@@ -91,6 +140,14 @@ header p {
   font-family: var(--font-family);
   position: relative;
   z-index: 1;
+}
+
+/* Filtering Transition */
+.service-card.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+  transition: all 0.3s ease;
 }
 
 footer {
