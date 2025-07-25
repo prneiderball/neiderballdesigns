@@ -150,6 +150,14 @@ header p {
   transition: all 0.3s ease;
 }
 
+.back-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
 footer {
   text-align: center;
   padding: 2rem;
