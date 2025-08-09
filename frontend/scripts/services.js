@@ -51,7 +51,7 @@ const services = [
   {
     icon: "fa-mobile-screen",
     title: "Phone/Web App Build",
-    price: "$4,500",
+    price: "starting from $2,500",
     desc: "Custom app with 3 key features, integrations & 1 month of support.",
     category: "custom",
   },
