@@ -1,13 +1,3 @@
-:root {
-  --font-family: 'Segoe UI', sans-serif;
-  --font-tech: 'Orbitron', sans-serif;
-  --primary-color: #D4AF37;
-  --accent-color: #00C4EF;
-  --highlight-color: #FFD700;
-  --background-color: #0F1415;
-  --text-color: #EDEDED;
-  --transition-speed: 0.3s;
-}
 
 body {
   margin: 0;
