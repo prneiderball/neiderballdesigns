@@ -37,12 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
   class ParticleSystem {
     constructor(selector, numParticles = 100) {
       this.canvas = document.querySelector(selector);
-      if (!this.canvas) {
-        console.error(`Canvas element '${selector}' not found.`);
-        return;
-      }
+      if (!this.canvas) return;
       this.ctx = this.canvas.getContext("2d");
-      this.particles = [];
       this.numParticles = numParticles;
       this.cellSize = 100;
       this.grid = {};
@@ -106,8 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const cellY = Math.floor(p.y / this.cellSize);
         const neighbors = this.getNeighborParticles(cellX, cellY);
 
-        for (let j = 0; j < neighbors.length; j++) {
-          const other = neighbors[j];
+        for (let other of neighbors) {
           if (other === p) continue;
           const dx = p.x - other.x;
           const dy = p.y - other.y;
@@ -149,33 +144,24 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typeof gsap !== "undefined") {
     gsap.set(".hero__content", { zIndex: 2 });
 
-    const tl = gsap.timeline();
-    tl.from(".hero__title", {
-      opacity: 0,
-      y: 60,
-      duration: 1.5,
-      ease: "elastic.out(1, 0.5)",
-    })
-      .from(
+    const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+
+    tl.fromTo(
+      ".hero__title",
+      { opacity: 0, y: 60 },
+      { opacity: 1, y: 0, duration: 1.5, ease: "elastic.out(1,0.5)" }
+    )
+      .fromTo(
         ".hero__subtitle",
-        {
-          opacity: 0,
-          y: 40,
-          duration: 1.2,
-          ease: "power2.out",
-        },
-        "-=0.5"
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 1.2 },
+        "-=1"
       )
-      .from(
+      .fromTo(
         ".btn--primary",
-        {
-          opacity: 0,
-          scale: 0.9,
-          y: 30,
-          duration: 1,
-          ease: "back.out(1.7)",
-        },
-        "-=0.3"
+        { opacity: 0, scale: 0.9, y: 30 },
+        { opacity: 1, scale: 1, y: 0, duration: 1, ease: "back.out(1.7)", delay: 0.2 },
+        "-=0.5"
       )
       .to(
         ".hero__title",
@@ -205,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
           gsap.to(card, {
             scale: 1.1,
             rotationY: 10,
-            boxShadow: "0 25px 60px rgba(0, 212, 255, 0.5)",
+            boxShadow: "0 25px 60px rgba(0,212,255,0.5)",
             duration: 0.5,
             ease: "power2.out",
           });
@@ -215,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
           gsap.to(card, {
             scale: 1,
             rotationY: 0,
-            boxShadow: "0 20px 50px rgba(212, 175, 55, 0.3)",
+            boxShadow: "0 20px 50px rgba(212,175,55,0.3)",
             duration: 0.5,
             ease: "power2.inOut",
           });
@@ -225,66 +211,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const inputs = document.querySelectorAll(".contact__input, .contact__textarea");
     inputs.forEach((input) => {
-      input.addEventListener("focus", function () {
-        gsap.to(this, {
+      input.addEventListener("focus", () => {
+        gsap.to(input, {
           scale: 1.05,
           borderColor: "var(--highlight-color)",
-          boxShadow: "0 0 25px rgba(0, 212, 255, 0.6)",
+          boxShadow: "0 0 25px rgba(0,212,255,0.6)",
           duration: 0.3,
         });
       });
-      input.addEventListener("blur", function () {
-        gsap.to(this, {
+      input.addEventListener("blur", () => {
+        gsap.to(input, {
           scale: 1,
-          borderColor: "rgba(212, 175, 55, 0.3)",
+          borderColor: "rgba(212,175,55,0.3)",
           boxShadow: "none",
           duration: 0.3,
         });
       });
     });
 
-    // === Smooth Scroll Navigation ===
-    if (typeof ScrollToPlugin !== "undefined") {
-      document.querySelectorAll(".nav__link").forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (!target) return;
+    // Smooth Scroll Navigation
+    document.querySelectorAll(".nav__link").forEach((anchor) => {
+      anchor.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = document.querySelector(anchor.getAttribute("href"));
+        if (!target) return;
 
-          gsap.to(window, {
-            duration: 1.2,
-            scrollTo: { y: target, offsetY: 80 },
-            onStart: () =>
-              gsap.to(".header", { y: "-10px", duration: 0.5, ease: "power1.out" }),
-            onComplete: () =>
-              gsap.to(".header", { y: "0", duration: 0.5, ease: "power1.in" }),
-          });
+        gsap.to(window, {
+          duration: 1.2,
+          scrollTo: { y: target, offsetY: 80 },
+          onStart: () => gsap.to(".header", { y: "-10px", duration: 0.5, ease: "power1.out" }),
+          onComplete: () => gsap.to(".header", { y: "0", duration: 0.5, ease: "power1.in" }),
         });
       });
-    } else {
-      console.warn("GSAP ScrollToPlugin not loaded.");
-    }
-  } else {
-    console.warn("GSAP not loaded.");
+    });
   }
 
- // === Mobile Navigation Toggle ===
-const navToggle = document.querySelector(".nav__toggle");
-const navList = document.querySelector(".nav__list");
-const navLinks = document.querySelectorAll(".nav__link");
+  // === Mobile Navigation Toggle ===
+  const navToggle = document.querySelector(".nav__toggle");
+  const navList = document.querySelector(".nav__list");
+  const navLinks = document.querySelectorAll(".nav__link");
 
-if (navToggle && navList) {
-  navToggle.addEventListener("click", () => {
-    navList.classList.toggle("open");
-    navToggle.classList.toggle("nav__toggle--open");
-  });
-
-  // Close nav when link is clicked (mobile UX)
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      navList.classList.remove("open");
-      navToggle.classList.remove("nav__toggle--open");
+  if (navToggle && navList) {
+    navToggle.addEventListener("click", () => {
+      navList.classList.toggle("open");
+      navToggle.classList.toggle("nav__toggle--open");
     });
-  });
-}
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        navList.classList.remove("open");
+        navToggle.classList.remove("nav__toggle--open");
+      });
+    });
+  }
 });

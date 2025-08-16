@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Neider-Ball Designs | Web & Tech Solutions</title>
-    <link rel="icon" type="image/png" href="./frontend/assets/favicon.png" />
+    <meta
+      name="description"
+      content="Neider-Ball Designs helps Gulfport and Mississippi Gulf Coast small businesses build websites, automate tasks, and use modern tech to save time and grow."
+    />
+    <link rel="icon" type="image/png" href="/frontend/assets/favicon.png" />
     <link rel="stylesheet" href="./frontend/styles/main.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Orbitron:wght@400;700&display=swap"
@@ -26,6 +30,7 @@
     <script defer src="./frontend/scripts/main.js"></script>
   </head>
   <body>
+    <!-- Header -->
     <header class="header">
       <div class="header__logo">NB Designs</div>
 
@@ -39,36 +44,34 @@
       <nav class="nav">
         <ul class="nav__list">
           <li><a href="#about" class="nav__link">About</a></li>
+          <li><a href="#portfolio" class="nav__link">Portfolio</a></li>
           <li>
             <a href="./frontend/pages/services.html" class="nav__link"
               >Services</a
             >
           </li>
-        <!--  <li>
-            <a href="./frontend/pages/articles.html" class="nav__link"
-              >Articles</a
-            >
-          </li>
-          <li>
-            <a href="./frontend/pages/articles.html" class="nav__link">Blog</a>
-          </li>
-        -->
           <li><a href="#contact" class="nav__link">Contact</a></li>
         </ul>
       </nav>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero" id="hero">
       <canvas class="hero-canvas"></canvas>
       <div class="hero__content">
-        <h1 class="hero__title">Innovative Web Design for Small Businesses</h1>
+        <h1 class="hero__title">
+          Innovative Web & Tech Solutions for Small Businesses
+        </h1>
         <p class="hero__subtitle">
-          Custom websites, smart automations, and modern tech to help you stand
-          out.
+          Serving Gulfport, Biloxi, and the Mississippi Gulf Coast — I help local
+          businesses build modern websites, automate workflows, and work
+          smarter.
         </p>
+        <a href="#contact" class="btn btn--primary">Book a Free Tech Checkup</a>
       </div>
     </section>
 
+    <!-- About -->
     <section class="about" id="about">
       <div class="container">
         <h2 class="section-title">
@@ -76,12 +79,11 @@
         </h2>
         <p class="about__text">
           I’m a <strong>web developer</strong> and
-          <strong>tech consultant</strong> based in Gulfport, MS, helping small
-          businesses and startups build a strong online presence. I create
-          <strong>fast, mobile-friendly websites</strong> that look great on any
-          device, <strong>automate repetitive tasks</strong> to save you time,
-          and integrate <strong>smart tools and AI solutions</strong> to make
-          your business more efficient.
+          <strong>tech consultant</strong> based in Gulfport, MS. I help small
+          businesses and startups build a strong online presence with
+          <strong>fast, mobile-friendly websites</strong>, save time with
+          <strong>automation</strong>, and stay competitive with
+          <strong>smart AI tools</strong>.
         </p>
         <p class="about__text">
           Whether you're launching your first site or upgrading an existing one,
@@ -92,59 +94,100 @@
       </div>
     </section>
 
+    <!-- Portfolio
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <h2 class="section-title">Recent Projects</h2>
+        <div class="portfolio__grid">
+          <div class="portfolio-card">
+            <img
+              src="./frontend/assets/demo-cafe.jpg"
+              alt="Cafe demo website preview"
+              class="portfolio-card__img"
+            />
+            <h3 class="portfolio-card__title">Cafe Demo Site</h3>
+            <p class="portfolio-card__text">
+              A sleek, mobile-friendly one-page site for a local coffee shop.
+            </p>
+          </div>
+
+          <div class="portfolio-card">
+            <img
+              src="./frontend/assets/demo-retail.jpg"
+              alt="Retail demo website preview"
+              class="portfolio-card__img"
+            />
+            <h3 class="portfolio-card__title">Retail Dashboard</h3>
+            <p class="portfolio-card__text">
+              Automated sales tracking and reporting dashboard for small
+              retailers.
+            </p>
+          </div>
+
+          <div class="portfolio-card">
+            <img
+              src="./frontend/assets/demo-service.jpg"
+              alt="Service business demo website preview"
+              class="portfolio-card__img"
+            />
+            <h3 class="portfolio-card__title">Service Business Site</h3>
+            <p class="portfolio-card__text">
+              Multi-page website with booking form and Google Analytics
+              integration.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>  -->
+
+    <!-- Services -->
     <section class="services" id="services">
       <div class="container">
         <h2 class="section-title">My Services</h2>
         <div class="services__grid">
-          <div class="service-card service-card--template">
+          <div class="service-card">
             <h3 class="service-card__title">Starter Template Website</h3>
-            <p class="service-card__price">$350</p>
+            <p class="service-card__price"><span class="price">$350</span></p>
             <ul class="service-card__list">
-              <li>One-page layout with up to 5 content sections</li>
+              <li>One-page layout with up to 5 sections</li>
               <li>Logo and color customization</li>
               <li>Mobile-optimized and fast-loading</li>
               <li>Content placement included</li>
               <li>Delivered within 72 hours</li>
-              <li>Perfect for quick launches and local businesses</li>
             </ul>
           </div>
 
-          <div class="service-card service-card--template">
+          <div class="service-card">
             <h3 class="service-card__title">Pro Template Website</h3>
-            <p class="service-card__price">$500</p>
+            <p class="service-card__price"><span class="price">$500</span></p>
             <ul class="service-card__list">
-              <li>Two-page site (e.g. Home + Contact or Services)</li>
+              <li>Two-page site (e.g. Home + Contact)</li>
               <li>Includes all Starter features</li>
               <li>Smooth scroll animations</li>
-              <li>Basic SEO setup for visibility</li>
+              <li>Basic SEO setup</li>
               <li>Google Analytics integration</li>
-              <li>Delivered in 5 business days</li>
-              <li>Ideal for growing teams and service providers</li>
             </ul>
           </div>
 
-          <div class="service-card service-card--template">
+          <div class="service-card">
             <h3 class="service-card__title">Premium Template Website</h3>
-            <p class="service-card__price">$750</p>
+            <p class="service-card__price"><span class="price">$750</span></p>
             <ul class="service-card__list">
-              <li>Multi-page site with up to 3 pages</li>
+              <li>Multi-page site (up to 3 pages)</li>
               <li>Includes all Pro features</li>
-              <li>Premium JS/CSS effects and subtle animations</li>
-              <li>Contact form with email notifications</li>
-              <li>Social media integration</li>
-              <li>Enhanced SEO and performance optimization</li>
-              <li>Delivered in 7 business days</li>
-              <li>Best for brands ready to stand out online</li>
+              <li>Premium JS/CSS animations</li>
+              <li>Contact form with email alerts</li>
+              <li>Enhanced SEO & performance</li>
             </ul>
           </div>
 
-          <div class="service-card service-card--custom">
+          <div class="service-card">
             <h3 class="service-card__title">Custom Website (3+ pages)</h3>
-            <p class="service-card__price">Starting from $1,000</p>
+            <p class="service-card__price">Starting from <span class="price">$1,000</span></p>
             <ul class="service-card__list">
               <li>Responsive design</li>
-              <li>SEO & analytics</li>
-              <li>Built to specification</li>
+              <li>Advanced SEO & analytics</li>
+              <li>Built to spec</li>
               <li>One revision round</li>
             </ul>
           </div>
@@ -157,10 +200,11 @@
       </div>
     </section>
 
+    <!-- Contact -->
     <section class="contact" id="contact">
       <div class="container">
         <h2 class="section-title">Get in Touch</h2>
-        <form class="contact__form">
+        <form class="contact__form" aria-label="Contact form">
           <input
             type="text"
             name="name"
@@ -186,9 +230,13 @@
       </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
       <div class="footer__container">
-        <p class="footer__text">© 2025 Neider-Ball Designs | Gulfport, MS</p>
+        <p class="footer__text">
+          © 2025 Neider-Ball Designs | Serving Gulfport & the Mississippi Gulf
+          Coast
+        </p>
       </div>
     </footer>
   </body>
