@@ -1,40 +1,43 @@
 @media (max-width: 768px) {
-  /* Hidden toggle by default */
+  /* Toggle button */
   .nav__toggle {
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 5px;
     background: none;
     border: none;
     cursor: pointer;
+    margin-left: auto;
     z-index: 1100;
   }
 
   .nav__toggle-line {
-    width: 25px;
+    width: 30px;
     height: 3px;
     background-color: var(--secondary-color);
-    transition: all var(--transition-speed) ease;
-  }
-  .nav {
-    width: 100%;
+    border-radius: 2px;
+    transition: all 0.3s ease;
   }
 
-  .nav__toggle {
-    display: flex;
-    margin-left: auto;
+  /* Navigation menu */
+  .nav {
+    width: 100%;
+    position: relative;
   }
 
   .nav__list {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: rgba(15, 20, 21, 0.95);
+    left: 0; /* full width */
+    background-color: rgba(15, 20, 21, 0.97);
     backdrop-filter: blur(15px);
     flex-direction: column;
-    width: 100%;
-    transform: translateY(-150%);
-    transition: transform var(--transition-speed) ease;
+    transform: translateY(-120%);
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    opacity: 0;
+    display: flex;
+    align-items: center;
     box-shadow: 0 10px 30px rgba(0, 196, 239, 0.2);
     border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     padding: 1rem 0;
@@ -43,11 +46,20 @@
 
   .nav__list.open {
     transform: translateY(0);
+    opacity: 1;
   }
 
   .nav__link {
-    padding: 1rem;
+    padding: 1rem 0;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
+    width: 100%;
+    display: block;
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+  }
+
+  .nav__link:hover {
+    color: var(--highlight-color);
   }
 }
