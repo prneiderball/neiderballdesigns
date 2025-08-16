@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // === NAV LINKS (global scope for smooth scroll & mobile nav) ===
+  const navLinks = document.querySelectorAll(".nav__link");
+  const navToggle = document.querySelector(".nav__toggle");
+  const navList = document.querySelector(".nav__list");
+
   // === PARTICLE SYSTEM ===
   class Particle {
     constructor(canvas) {
@@ -44,24 +49,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
       window.addEventListener("resize", () => this.onResize());
     }
-
     resizeCanvas() {
       this.canvas.width = window.innerWidth;
       this.canvas.height = window.innerHeight;
     }
-
     initParticles() {
       this.particles = [];
       for (let i = 0; i < this.numParticles; i++) {
         this.particles.push(new Particle(this.canvas));
       }
     }
-
     onResize() {
       this.resizeCanvas();
       this.initParticles();
     }
-
     updateSpatialGrid() {
       this.grid = {};
       for (let p of this.particles) {
@@ -72,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
         this.grid[key].push(p);
       }
     }
-
     getNeighborParticles(cellX, cellY) {
       const neighbors = [];
       for (let dx = -1; dx <= 1; dx++) {
@@ -83,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       return neighbors;
     }
-
     animate() {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.updateSpatialGrid();
@@ -140,7 +139,6 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.set(".hero__content", { zIndex: 2 });
 
     const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-
     tl.fromTo(
       ".hero__title",
       { opacity: 0, y: 60 },
@@ -160,12 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
       )
       .to(
         ".hero__title",
-        {
-          textShadow: "0 0 40px rgba(0, 212, 255, 0.7)",
-          duration: 1,
-          yoyo: true,
-          repeat: -1,
-        },
+        { textShadow: "0 0 40px rgba(0, 212, 255, 0.7)", duration: 1, yoyo: true, repeat: -1 },
         "-=0.5"
       );
 
@@ -226,12 +219,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // === Smooth Scroll Navigation ===
-    const navLinks = document.querySelectorAll(".nav__link");
     navLinks.forEach((anchor) => {
       anchor.addEventListener("click", (e) => {
         const href = anchor.getAttribute("href");
 
-        // Smooth scroll only for internal links
         if (href.startsWith("#")) {
           e.preventDefault();
           const target = document.querySelector(href);
@@ -246,15 +237,11 @@ document.addEventListener("DOMContentLoaded", () => {
               gsap.to(".header", { y: "0", duration: 0.5, ease: "power1.in" }),
           });
         }
-        // external links navigate normally
       });
     });
   }
 
   // === Mobile Navigation Toggle ===
-  const navToggle = document.querySelector(".nav__toggle");
-  const navList = document.querySelector(".nav__list");
-
   if (navToggle && navList) {
     navToggle.addEventListener("click", () => {
       navList.classList.toggle("open");
