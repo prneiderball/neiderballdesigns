@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // === NAV LINKS (global scope for smooth scroll & mobile nav) ===
+  // === GLOBAL NAV ELEMENTS ===
   const navLinks = document.querySelectorAll(".nav__link");
   const navToggle = document.querySelector(".nav__toggle");
   const navList = document.querySelector(".nav__list");
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   new ParticleSystem(".hero-canvas");
 
-  // === ScrollReveal Animation ===
+  // === ScrollReveal ===
   if (typeof ScrollReveal !== "undefined") {
     ScrollReveal().reveal(".section-title", {
       delay: 400,
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // === GSAP Hero & Service Animations ===
+  // === GSAP Animations ===
   if (typeof gsap !== "undefined") {
     gsap.set(".hero__content", { zIndex: 2 });
 
@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Input focus effects
+    // Input focus
     const inputs = document.querySelectorAll(".contact__input, .contact__textarea");
     inputs.forEach((input) => {
       input.addEventListener("focus", () => {
@@ -218,12 +218,13 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // === Smooth Scroll Navigation ===
-    navLinks.forEach((anchor) => {
-      anchor.addEventListener("click", (e) => {
+    // === Smooth Scroll using ScrollToPlugin ===
+    if (typeof ScrollToPlugin !== "undefined") {
+      navLinks.forEach((anchor) => {
         const href = anchor.getAttribute("href");
+        if (!href.startsWith("#")) return;
 
-        if (href.startsWith("#")) {
+        anchor.addEventListener("click", (e) => {
           e.preventDefault();
           const target = document.querySelector(href);
           if (!target) return;
@@ -231,17 +232,14 @@ document.addEventListener("DOMContentLoaded", () => {
           gsap.to(window, {
             duration: 1.2,
             scrollTo: { y: target, offsetY: 80 },
-            onStart: () =>
-              gsap.to(".header", { y: "-10px", duration: 0.5, ease: "power1.out" }),
-            onComplete: () =>
-              gsap.to(".header", { y: "0", duration: 0.5, ease: "power1.in" }),
+            ease: "power2.out",
           });
-        }
+        });
       });
-    });
+    }
   }
 
-  // === Mobile Navigation Toggle ===
+  // === Mobile Nav Toggle ===
   if (navToggle && navList) {
     navToggle.addEventListener("click", () => {
       navList.classList.toggle("open");
