@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
       this.ctx = canvas.getContext("2d");
       this.reset();
     }
-
     reset() {
       this.x = Math.random() * this.canvas.width;
       this.y = Math.random() * this.canvas.height;
@@ -15,17 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
       this.speedY = Math.random() * 2 - 1;
       this.color = `hsl(${Math.random() * 360}, 70%, 50%)`;
     }
-
     update() {
       this.x += this.speedX;
       this.y += this.speedY;
-
       if (this.size > 0.2) this.size -= 0.01;
-
       if (this.x < 0 || this.x > this.canvas.width) this.speedX *= -1;
       if (this.y < 0 || this.y > this.canvas.height) this.speedY *= -1;
     }
-
     draw() {
       this.ctx.fillStyle = this.color;
       this.ctx.beginPath();
@@ -140,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // === GSAP Hero Content Animation ===
+  // === GSAP Hero & Service Animations ===
   if (typeof gsap !== "undefined") {
     gsap.set(".hero__content", { zIndex: 2 });
 
@@ -209,6 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
+    // Input focus effects
     const inputs = document.querySelectorAll(".contact__input, .contact__textarea");
     inputs.forEach((input) => {
       input.addEventListener("focus", () => {
@@ -229,19 +225,28 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Smooth Scroll Navigation
-    document.querySelectorAll(".nav__link").forEach((anchor) => {
+    // === Smooth Scroll Navigation ===
+    const navLinks = document.querySelectorAll(".nav__link");
+    navLinks.forEach((anchor) => {
       anchor.addEventListener("click", (e) => {
-        e.preventDefault();
-        const target = document.querySelector(anchor.getAttribute("href"));
-        if (!target) return;
+        const href = anchor.getAttribute("href");
 
-        gsap.to(window, {
-          duration: 1.2,
-          scrollTo: { y: target, offsetY: 80 },
-          onStart: () => gsap.to(".header", { y: "-10px", duration: 0.5, ease: "power1.out" }),
-          onComplete: () => gsap.to(".header", { y: "0", duration: 0.5, ease: "power1.in" }),
-        });
+        // Smooth scroll only for internal links
+        if (href.startsWith("#")) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (!target) return;
+
+          gsap.to(window, {
+            duration: 1.2,
+            scrollTo: { y: target, offsetY: 80 },
+            onStart: () =>
+              gsap.to(".header", { y: "-10px", duration: 0.5, ease: "power1.out" }),
+            onComplete: () =>
+              gsap.to(".header", { y: "0", duration: 0.5, ease: "power1.in" }),
+          });
+        }
+        // external links navigate normally
       });
     });
   }
@@ -249,7 +254,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // === Mobile Navigation Toggle ===
   const navToggle = document.querySelector(".nav__toggle");
   const navList = document.querySelector(".nav__list");
-  const navLinks = document.querySelectorAll(".nav__link");
 
   if (navToggle && navList) {
     navToggle.addEventListener("click", () => {
