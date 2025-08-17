@@ -1,113 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Services | Neider-Ball Designs</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Services | Neider-Ball Designs</title>
 
-  <!-- Shared Styles -->
-  <link rel="stylesheet" href="../styles/main.css" />
-  <link rel="stylesheet" href="../styles/services.css" />
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/services.css" />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Orbitron:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
-  <!-- Scripts -->
-  <script defer src="https://unpkg.com/scrollreveal"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollToPlugin.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
-  <script defer src="../scripts/main.js"></script>
-  <script defer src="../scripts/services.js"></script>
-</head>
+    <!-- Scripts -->
+    <script defer src="https://unpkg.com/scrollreveal"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollToPlugin.min.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"
+    ></script>
+    <script defer src="../scripts/main.js"></script>
+    <script defer src="../scripts/services.js"></script>
+  </head>
 
-<body>
-  <!-- Header -->
-  <header class="header">
-    <a href="../../index.html" class="header__logo">NB Designs</a>
-    <nav class="nav" aria-label="Main Navigation">
-      <ul class="nav__list">
-        <li><a href="../../index.html" class="nav__link">Home</a></li>
-      <!--  <li><a href="../../frontend/pages/articles.html" class="nav__link">Articles</a></li> -->
-      </ul>
-    </nav>
-  </header>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <a href="../../index.html" class="header__logo">NB Designs</a>
+      <nav class="nav" aria-label="Main Navigation">
+        <ul class="nav__list">
+          <li><a href="../../index.html" class="nav__link">Home</a></li>
+          <!--  <li><a href="../../frontend/pages/articles.html" class="nav__link">Articles</a></li> -->
+        </ul>
+      </nav>
+    </header>
 
-  <!-- Hero Section -->
-  <section class="hero" style="padding: 6rem 2rem 3rem;">
-    <div class="hero__content">
-      <h1 class="hero__title">Tech Solutions</h1>
-      <p class="hero__subtitle">Automations, Development, Support — everything you need in one place.</p>
-    </div>
-  </section>
-
-  <!-- Intro Section -->
-  <section class="services-intro container">
-    <h2 class="section-title">Explore My Services</h2>
-    <p class="about__text">
-      At Neider Ball Designs, I provide web development, automations, and tech solutions that help small businesses save time, increase efficiency, and grow their online presence. Whether you’re looking for a ready-to-go template, a fully custom site, or ongoing support, I have a solution for you.
-    </p>
-  </section>
-
-  <!-- Filter Buttons -->
-  <section class="filters container">
-    <div id="filter-buttons" class="filter-controls" role="group" aria-label="Filter Services">
-      <button class="filter-button active" data-filter="all">All</button>
-      <button class="filter-button" data-filter="template">Templates</button>
-      <button class="filter-button" data-filter="automation">Automations</button>
-      <button class="filter-button" data-filter="custom">Custom</button>
-      <button class="filter-button" data-filter="retainer">Retainers</button>
-    </div>
-  </section>
-
-  <!-- Featured Services / Dynamic Cards -->
-  <main class="service-grid container" id="services" role="main" aria-live="polite">
-    <!-- Dynamic service cards are injected here via JS with classes like `.service-card--template` -->
-  </main>
-
-  <!-- Process Section -->
-  <section class="services-process container">
-    <h2 class="section-title">How We Work</h2>
-    <div class="process-steps">
-      <div class="process-step">
-        <h3 class="service-card__title">1. Consultation</h3>
-        <p class="about__text">We discuss your goals, needs, and priorities.</p>
+    <!-- Hero Section -->
+    <section class="hero" style="padding: 6rem 2rem 3rem">
+      <div class="hero__content">
+        <h1 class="hero__title">Tech Solutions</h1>
+        <p class="hero__subtitle">
+          Automations, Development, Support — everything you need in one place.
+        </p>
       </div>
-      <div class="process-step">
-        <h3 class="service-card__title">2. Design & Build</h3>
-        <p class="about__text">I create a tailored website or automation solution for your business.</p>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="services-intro container">
+      <h2 class="section-title">Explore My Services</h2>
+      <p class="about__text">
+        At Neider Ball Designs, I provide web development, automations, and tech
+        solutions that help small businesses save time, increase efficiency, and
+        grow their online presence. Whether you’re looking for a ready-to-go
+        template, a fully custom site, or ongoing support, I have a solution for
+        you.
+      </p>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="filters container">
+      <div
+        id="filter-buttons"
+        class="filter-controls"
+        role="group"
+        aria-label="Filter Services"
+      >
+        <button class="filter-button active" data-filter="all">All</button>
+        <button class="filter-button" data-filter="template">Templates</button>
+        <button class="filter-button" data-filter="automation">
+          Automations
+        </button>
+        <button class="filter-button" data-filter="custom">Custom</button>
+        <button class="filter-button" data-filter="support">Support</button>
+        <button class="filter-button" data-filter="consulting">Consulting</button>
       </div>
-      <div class="process-step">
-        <h3 class="service-card__title">3. Launch & Optimize</h3>
-        <p class="about__text">We go live and fine-tune the solution to ensure maximum performance.</p>
+    </section>
+
+    <!-- Featured Services / Dynamic Cards -->
+    <main
+      class="service-grid container"
+      id="services"
+      role="main"
+      aria-live="polite"
+    >
+      <!-- Dynamic service cards are injected here via JS with classes like `.service-card--template` -->
+    </main>
+
+    <!-- Process Section -->
+    <section class="services-process container">
+      <h2 class="section-title">How We Work</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <h3 class="service-card__title">1. Consultation</h3>
+          <p class="about__text">
+            We discuss your goals, needs, and priorities.
+          </p>
+        </div>
+        <div class="process-step">
+          <h3 class="service-card__title">2. Design & Build</h3>
+          <p class="about__text">
+            I create a tailored website or automation solution for your
+            business.
+          </p>
+        </div>
+        <div class="process-step">
+          <h3 class="service-card__title">3. Launch & Optimize</h3>
+          <p class="about__text">
+            We go live and fine-tune the solution to ensure maximum performance.
+          </p>
+        </div>
+        <div class="process-step">
+          <h3 class="service-card__title">4. Support</h3>
+          <p class="about__text">
+            Ongoing support, updates, and guidance to help your business grow.
+          </p>
+        </div>
       </div>
-      <div class="process-step">
-        <h3 class="service-card__title">4. Support</h3>
-        <p class="about__text">Ongoing support, updates, and guidance to help your business grow.</p>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="services-cta container">
+      <h2 class="section-title">Ready to Get Started?</h2>
+      <p class="about__text">
+        Schedule a free tech checkup and let’s discuss how we can help your
+        business work smarter.
+      </p>
+      <div class="btn-center">
+        <a href="#contact" class="btn btn--primary">Book Free Consultation</a>
       </div>
+    </section>
+
+    <!-- Back Home Button -->
+    <div class="back-home">
+      <a href="../../index.html" class="btn btn--secondary">← Back to Home</a>
     </div>
-  </section>
 
-  <!-- CTA Section -->
-  <section class="services-cta container">
-    <h2 class="section-title">Ready to Get Started?</h2>
-    <p class="about__text">Schedule a free tech checkup and let’s discuss how we can help your business work smarter.</p>
-    <div class="btn-center">
-      <a href="#contact" class="btn btn--primary">Book Free Consultation</a>
-    </div>
-  </section>
-
-  <!-- Back Home Button -->
-  <div class="back-home">
-    <a href="../../index.html" class="btn btn--secondary">← Back to Home</a>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer" role="contentinfo">
-    <p class="footer__text">© 2025 Neider-Ball Designs | Gulfport, MS</p>
-  </footer>
-</body>
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <p class="footer__text">© 2025 Neider-Ball Designs | Gulfport, MS</p>
+    </footer>
+  </body>
 </html>
