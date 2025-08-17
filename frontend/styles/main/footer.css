@@ -1,3 +1,12 @@
+.footer__contact a {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.footer__contact a:hover {
+  color: var(--highlight-color);
+}
+
 .footer {
   background: #0F1415; /* Darker footer */
   color: var(--text-color);
