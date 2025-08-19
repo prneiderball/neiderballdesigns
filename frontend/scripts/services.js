@@ -1,93 +1,92 @@
 const services = [
-  {
-    icon: "fa-paper-plane",
-    title: "Starter Website",
-    price: "Starting from $350",
-    desc: "One-page responsive site with up to 5 content sections. Ideal for solo founders or local businesses needing a fast, professional presence.",
-    category: "website",
-  },
-  {
-    icon: "fa-layer-group",
-    title: "Pro Website",
-    price: "Starting from $500",
-    desc: "Two-page site with smooth scroll, basic SEO, analytics, and contact page. Perfect for growing teams needing visibility and performance.",
-    category: "website",
-  },
+  // Websites
   {
     icon: "fa-globe",
-    title: "Custom Website",
-    price: "Starting from $1,000",
-    desc: "Fully custom site with premium effects, contact forms, social integration, and SEO optimization. Includes discovery session and revisions.",
+    title: "Professional Website",
+    price: "Starting from $500",
+    desc: "A fully professional website built for your business. We handle the tech setup, styling, and launch, so you can focus on running your business.",
+    features: [
+      "One-page or multi-page site tailored to your needs",
+      "Contact forms so customers can reach you easily",
+      "Social media links integrated",
+      "Optimized for search engines so customers can find you",
+      "Styled to match your brand and vision"
+    ],
     category: "website",
   },
 
+  // Automations
   {
     icon: "fa-robot",
-    title: "Starter Automations",
+    title: "Basic Automation Setup",
     price: "Starting from $500",
-    desc: "Simple automations like form-to-CRM, auto-email responders, and calendar sync. Saves hours weekly. Includes 1 month support.",
+    desc: "Automations handle forms, emails, and scheduling for you. Spend less time on repetitive tasks and more time with customers.",
     category: "automation",
   },
   {
     icon: "fa-gears",
-    title: "Pro Automation Bundle",
+    title: "Advanced Automation Package",
     price: "Starting from $1,200",
-    desc: "5 custom workflows with full setup, training, and 2-month support. Ideal for teams looking to streamline operations.",
+    desc: "Set up multiple daily tasks to run automatically. Comes with training and support so your team can focus on growing your business.",
     category: "automation",
   },
   {
     icon: "fa-repeat",
-    title: "Ongoing Automation Care",
+    title: "Ongoing Automation Support",
     price: "$300–$1,000/mo",
-    desc: "Monthly updates, new automations, and priority support. Tailored to your evolving business needs.",
+    desc: "We update your automations and add new ones as your business changes. You don’t have to worry about tech hassles.",
     category: "automation",
   },
 
+  // Custom Apps
   {
     icon: "fa-mobile-screen",
-    title: "Custom App Build",
+    title: "Custom App or Tool",
     price: "Starting from $2,500",
-    desc: "Custom app or web tool with up to 3 core features, integrations, and 1 month of support. Ideal for internal tools or customer-facing apps.",
+    desc: "Build a web app or tool to help with your business tasks. We handle the setup and support so you can focus on results.",
     category: "custom",
   },
 
+  // Support Plans
   {
     icon: "fa-cloud",
     title: "Launch Care Plan",
     price: "$125/mo",
-    desc: "Hosting, security, and essential upkeep for newly launched sites. Includes uptime monitoring and basic performance checks.",
+    desc: "We host and maintain your site, keep it secure, and monitor performance. You don’t have to worry about tech details.",
     category: "support",
   },
   {
     icon: "fa-shield-halved",
     title: "Essential Tech Plan",
     price: "Starting from $350/mo",
-    desc: "Lightweight monthly support: updates, minor fixes, and performance tweaks. Ideal for small businesses who want reliability without long-term commitments.",
+    desc: "Regular updates, minor fixes, and checks to keep your systems running smoothly. Perfect for small businesses that want reliability without long-term commitments.",
     category: "support",
   },
   {
     icon: "fa-sitemap",
     title: "Automation & Growth Plan",
-    price: " Starting from $800/mo",
-    desc: "Hands-on workflow automation, software integration, and process improvements. Perfect for teams looking to save time, reduce errors, and scale efficiently.",
+    price: "Starting from $800/mo",
+    desc: "Hands-on help to automate tasks and improve processes. Saves time, reduces errors, and helps your business grow efficiently.",
     category: "support",
   },
 
+  // Consulting
   {
     icon: "fa-rocket",
     title: "Embedded Tech Partner",
     price: "Starting from $2,100/mo",
-    desc: "Full-service technical partnership with 25+ hrs/month of development, system builds, and dedicated support.",
+    desc: "Full-service technical support with 25+ hours per month. We handle development and system updates while you focus on your business.",
     category: "consulting",
   },
   {
     icon: "fa-lightbulb",
     title: "Tech Strategy Session",
     price: "Starting from $45/hr",
-    desc: "Focused consulting to review systems, suggest improvements, or plan tech adoption. Flexible sessions to fit your needs.",
+    desc: "One-on-one consulting to review your systems or plan new tech. Flexible sessions to fit your schedule and needs.",
     category: "consulting",
   },
 ];
+
 
 // --- Render logic ---
 const container = document.getElementById("services");
