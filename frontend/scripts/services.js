@@ -83,7 +83,7 @@ const services = [
   {
     icon: "fa-lightbulb",
     title: "Tech Strategy Session",
-    price: "Starting from $200/hr",
+    price: "Starting from $45/hr",
     desc: "Focused consulting to review systems, suggest improvements, or plan tech adoption. Flexible sessions to fit your needs.",
     category: "consulting",
   },
