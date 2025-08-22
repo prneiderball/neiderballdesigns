@@ -3,7 +3,7 @@ const services = [
   {
     icon: "fa-globe",
     title: "Professional Website",
-    price: "Starting from $500",
+    price: "Starting from $350",
     desc: "A fully professional website built for your business. We handle the tech setup, styling, and launch, so you can focus on running your business.",
     features: [
       "One-page or multi-page site tailored to your needs",
