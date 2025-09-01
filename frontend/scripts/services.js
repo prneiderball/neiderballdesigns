@@ -58,7 +58,7 @@ const services = [
   {
     icon: "fa-shield-halved",
     title: "Essential Tech Plan",
-    price: "Starting from 4350/mo",
+    price: "Starting from $350/mo",
     desc: "Regular updates, minor fixes, and checks to keep your systems running smoothly. Perfect for small businesses that want reliability without long-term commitments.",
     category: "support",
   },
