@@ -1,75 +1,38 @@
 :root {
-  --primary-color: #D4AF37;
-  --secondary-color: #F5F5F5;
-  --background-color: #0F1415;
-  --text-color: #D0D0D0;
-  --accent-color: #B0B0B0; /* slightly lighter for contrast */
-  --highlight-color: #00C4EF;
+  /* ========================
+     Core Color Palette
+  ======================== */
 
-  --font-family: 'Playfair Display', serif;
-  --font-tech: 'Orbitron', sans-serif;
+  --primary-color: #8c6a3f;
+  --primary-hover: #73552f;
 
-  --transition-speed: 0.4s;
+  --background-color: #f6f3ee;
+  --secondary-color: #faf8f4;
 
-  /* Future-proof UI variables */
-  --card-bg: #1A1F20;
-  --card-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
-}
+  --text-color: #2e2a26;
+  --text-muted: #6a5f55;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  --highlight-color: #b08a57;
 
-body {
-  font-family: var(--font-family), sans-serif;
-  background: linear-gradient(135deg, var(--background-color), #1A1F20);
-  color: var(--text-color);
-  line-height: 1.6;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  font-size: clamp(16px, 1.2vw, 18px);
-}
+  --border-color: #e5e0d8;
 
-img {
-  max-width: 100%;
-  display: block;
-  image-rendering: auto;
-}
+  /* ========================
+     Typography
+  ======================== */
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2.5rem;
-}
+  --font-body: "Inter", sans-serif;
+  --font-heading: "Playfair Display", serif;
 
-/* =========================
-   🏷️ Typography & Titles
-   ========================= */
-.section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin-bottom: 2.5rem;
-  text-align: center;
-  color: var(--primary-color);
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-family: var(--font-tech);
-  position: relative;
-}
+  /* ========================
+     UI Elements
+  ======================== */
 
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(
-    to right,
-    var(--primary-color),
-    var(--highlight-color)
-  );
-  border-radius: 2px;
+  --card-bg: #ffffff;
+  --card-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+
+  /* ========================
+     Motion
+  ======================== */
+
+  --transition-speed: 0.25s ease;
 }

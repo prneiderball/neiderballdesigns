@@ -1,35 +1,41 @@
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  background: var(--secondary-color);
+  border-top: 1px solid var(--border-color);
+
+  padding: 3rem 1.5rem;
+  text-align: center;
+
+  color: var(--text-muted);
+}
+
+/* =========================
+   FOOTER TEXT
+========================= */
+
+.footer__text {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+/* =========================
+   CONTACT LINKS
+========================= */
+
+.footer__contact {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
 .footer__contact a {
-  color: var(--secondary-color);
-  text-decoration: underline;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .footer__contact a:hover {
-  color: var(--highlight-color);
-}
-
-.footer {
-  background: #0F1415; /* Darker footer */
-  color: var(--text-color);
-  padding: 3rem;
-  text-align: center;
-  border-top: 2px solid rgba(212, 175, 55, 0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.footer::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(0, 196, 239, 0.03) 0%, transparent 70%); /* Darker glow */
-  animation: rotateGlow 15s linear infinite;
-  z-index: 0;
-}
-
-.footer__text {
-  position: relative;
-  z-index: 1;
+  text-decoration: underline;
 }

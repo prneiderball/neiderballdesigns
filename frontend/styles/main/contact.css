@@ -1,31 +1,55 @@
+/* =========================
+   CONTACT FORM
+========================= */
 
 .contact__form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  max-width: 800px;
+  gap: 1.5rem;
+
+  max-width: 700px;
   margin: 0 auto;
 }
 
+/* =========================
+   INPUTS
+========================= */
+
 .contact__input,
 .contact__textarea {
-  padding: 1.2rem;
-  border: 2px solid rgba(212, 175, 55, 0.3);
-  border-radius: 1rem;
-  font-size: 1.1rem;
-  background: rgba(255, 255, 255, 0.03); /* Darker input background */
+  padding: 0.9rem 1rem;
+
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+
+  font-size: 1rem;
+  font-family: var(--font-body);
+
+  background: #fff;
   color: var(--text-color);
-  transition: all var(--transition-speed) ease;
-  font-family: var(--font-family);
+
+  transition:
+    border-color var(--transition-speed),
+    box-shadow var(--transition-speed);
 }
+
+/* =========================
+   FOCUS STATE
+========================= */
 
 .contact__input:focus,
 .contact__textarea:focus {
-  border-color: var(--highlight-color);
-  box-shadow: 0 0 20px rgba(0, 196, 239, 0.5);
-  transform: scale(1.02);
+  outline: none;
+  border-color: var(--primary-color);
+
+  box-shadow: 0 0 0 2px rgba(140, 106, 63, 0.15);
 }
 
+/* =========================
+   TEXTAREA
+========================= */
+
 .contact__textarea {
-  min-height: 250px;
+  min-height: 180px;
+  resize: vertical;
 }

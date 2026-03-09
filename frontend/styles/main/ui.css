@@ -1,102 +1,70 @@
 /* =========================
-    Buttons
-   ========================= */
+   Buttons
+========================= */
+
 .btn {
-  position: relative;
   display: inline-block;
-  font-family: var(--font-tech);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-size: 1.2rem;
-  padding: 1.2rem 2.5rem;
-  border-radius: 1rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.9rem 2rem;
+
+  border-radius: 6px;
   border: none;
+
   cursor: pointer;
-  transition: all var(--transition-speed) ease;
-  overflow: hidden;
   text-decoration: none;
-  z-index: 1;
-  outline: none;
-}
 
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255, 255, 255, 0.25);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
-  z-index: 0;
-  opacity: 0;
-}
-
-.btn:hover::before {
-  width: 300px;
-  height: 300px;
-  opacity: 1;
-}
-
-.btn:focus {
-  outline: 3px solid rgba(0,196,239,0.6);
-  outline-offset: 4px;
-}
-
-.btn:active {
-  transform: scale(0.97);
+  transition:
+    transform var(--transition-speed),
+    background var(--transition-speed),
+    color var(--transition-speed);
 }
 
 /* ---- Primary Button ---- */
+
 .btn--primary {
-  background: linear-gradient(45deg, var(--primary-color), var(--highlight-color));
-  color: var(--background-color);
-  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.6);
+  background: var(--primary-color);
+  color: #fff;
 }
 
 .btn--primary:hover {
-  background: linear-gradient(45deg, #C19A2B, #00A3C9);
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 15px 40px rgba(0, 196, 239, 0.7);
+  background: var(--primary-hover);
+  transform: translateY(-2px);
 }
 
 /* ---- Secondary Button ---- */
+
 .btn--secondary {
-  background: rgba(255,255,255,0.05);
-  border: 2px solid var(--primary-color);
-  color: var(--secondary-color);
-  backdrop-filter: blur(6px);
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
 }
 
 .btn--secondary:hover {
-  background: linear-gradient(45deg, rgba(212,175,55,0.15), rgba(0,196,239,0.15));
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 25px rgba(0, 196, 239, 0.4);
+  background: var(--primary-color);
+  color: #fff;
+  transform: translateY(-2px);
 }
 
 /* Center alignment helper */
+
 .btn-center {
   display: flex;
   justify-content: center;
-  margin-top: 2.5rem; 
+  margin-top: 2.5rem;
 }
-
-.btn span {
-  position: relative;
-  z-index: 2;
-}
-
 
 /* =========================
-    About Section
-   ========================= */
+   About Section
+========================= */
+
 .about__text {
-  font-size: 1.3rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  max-width: 750px;
+  margin: 0 auto 1.5rem auto;
   text-align: center;
-  font-family: var(--font-family);
-  line-height: 1.9;
+  font-family: var(--font-body);
+  line-height: 1.7;
+  color: var(--text-muted);
 }
