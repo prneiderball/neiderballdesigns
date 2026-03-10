@@ -12,13 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================= */
 
   if (typeof gsap !== "undefined") {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    const tl = gsap.timeline({
+      defaults: { ease: "power3.out" }
+    });
 
     tl.from(".hero__title", {
       opacity: 0,
       y: 50,
       duration: 1
     })
+
       .from(
         ".hero__subtitle",
         {
@@ -28,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         "-=0.6"
       )
+
       .from(
         ".btn--primary",
         {
@@ -61,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   navLinks.forEach((link) => {
     const href = link.getAttribute("href");
 
-    if (!href.startsWith("#")) return;
+    if (!href || !href.startsWith("#")) return;
 
     link.addEventListener("click", (e) => {
       e.preventDefault();
@@ -70,28 +74,68 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!target) return;
 
+      const offset = 80;
+      const position =
+        target.getBoundingClientRect().top + window.pageYOffset - offset;
+
       window.scrollTo({
-        top: target.offsetTop - 80,
+        top: position,
         behavior: "smooth"
       });
     });
   });
 
   /* =========================
-     MOBILE NAV TOGGLE
+     MOBILE NAVIGATION
   ========================= */
 
   if (navToggle && navList) {
+    const closeMenu = () => {
+      navList.classList.remove("open");
+      navToggle.classList.remove("nav__toggle--open");
+      navToggle.setAttribute("aria-expanded", "false");
+    };
+
+    const openMenu = () => {
+      navList.classList.add("open");
+      navToggle.classList.add("nav__toggle--open");
+      navToggle.setAttribute("aria-expanded", "true");
+    };
+
     navToggle.addEventListener("click", () => {
-      navList.classList.toggle("open");
-      navToggle.classList.toggle("nav__toggle--open");
+      const isOpen = navList.classList.contains("open");
+
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
 
+    /* Close menu when clicking link */
+
     navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        navList.classList.remove("open");
-        navToggle.classList.remove("nav__toggle--open");
-      });
+      link.addEventListener("click", closeMenu);
+    });
+
+    /* Close menu when clicking outside */
+
+    document.addEventListener("click", (e) => {
+      if (
+        navList.classList.contains("open") &&
+        !navList.contains(e.target) &&
+        !navToggle.contains(e.target)
+      ) {
+        closeMenu();
+      }
+    });
+
+    /* Close menu on ESC key */
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeMenu();
+      }
     });
   }
 });
