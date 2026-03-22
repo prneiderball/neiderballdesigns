@@ -3,200 +3,188 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>
-      Website Development & Automation Services | Neider-Ball Designs
-    </title>
-
+    <title>Services &amp; Pricing | Neider-Ball Designs</title>
     <meta
       name="description"
-      content="Custom websites, automation systems, and tech consulting for small businesses on the Mississippi Gulf Coast."
+      content="Transparent pricing on websites, automation, custom apps, and ongoing tech support for Gulf Coast small businesses. No hidden fees, ever."
     />
-
-    <!-- Styles -->
+    <link rel="icon" type="image/png" href="/frontend/assets/favicon.png" />
     <link rel="stylesheet" href="../styles/main.css" />
     <link rel="stylesheet" href="../styles/services.css" />
-
-    <!-- Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-
-    <!-- Scripts -->
-    <script defer src="https://unpkg.com/scrollreveal"></script>
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"
     ></script>
-
-    <script defer src="../scripts/main.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"
+    ></script>
     <script defer src="../scripts/services.js"></script>
   </head>
 
   <body>
-    <!-- Header -->
-    <header class="header">
-      <a href="../../index.html" class="header__logo">NB Designs</a>
-
-      <nav class="nav" aria-label="Main Navigation">
+    <!-- ═══════════════════════════
+         HEADER
+    ═══════════════════════════ -->
+    <header class="header" role="banner">
+      <a href="/" class="header__logo">
+        NB <span class="header__logo-accent">Designs</span>
+      </a>
+      <button
+        class="nav__toggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="main-navigation"
+      >
+        <span class="nav__toggle-line"></span>
+        <span class="nav__toggle-line"></span>
+        <span class="nav__toggle-line"></span>
+      </button>
+      <nav class="nav" id="main-navigation" aria-label="Main navigation">
         <ul class="nav__list">
-          <li><a href="../../index.html" class="nav__link">Home</a></li>
+          <li><a href="/#about" class="nav__link">About</a></li>
+          <li>
+            <a href="/services.html" class="nav__link nav__link--active"
+              >Services</a
+            >
+          </li>
+          <li><a href="/#process" class="nav__link">How It Works</a></li>
+          <li>
+            <a href="/#contact" class="nav__link nav__link--cta"
+              >Book a Free Call</a
+            >
+          </li>
         </ul>
       </nav>
     </header>
 
-    <!-- Hero -->
-    <section class="hero" style="padding: 6rem 2rem 3rem">
-      <div class="hero__content">
-        <h1 class="hero__title">Technology Services for Small Businesses</h1>
-
-        <p class="hero__subtitle">
-          Websites, automation, and custom software designed to save time and
-          grow your business.
-        </p>
+    <!-- ═══════════════════════════
+         HERO
+    ═══════════════════════════ -->
+    <section class="services-hero" aria-labelledby="services-page-heading">
+      <div class="services-hero__bg" aria-hidden="true"></div>
+      <div class="services-hero__inner">
+        <div>
+          <p class="section-eyebrow">Services &amp; Pricing</p>
+          <h1 class="services-hero__title" id="services-page-heading">
+            The right help,<br />at the <em>right price.</em>
+          </h1>
+          <p class="services-hero__sub">
+            Every service is priced transparently and scoped to your actual
+            needs — no bloated retainers, no mystery invoices. Start small and
+            scale up as your business grows.
+          </p>
+          <a href="/#contact" class="btn btn--primary"
+            >Book a Free Consultation</a
+          >
+        </div>
+        <div class="services-hero__proof">
+          <div class="proof-stat">
+            <div class="proof-stat__num">$0</div>
+            <div class="proof-stat__label">Cost to talk it through first</div>
+          </div>
+          <div class="proof-stat">
+            <div class="proof-stat__num">Fixed</div>
+            <div class="proof-stat__label">Price agreed before work starts</div>
+          </div>
+          <div class="proof-stat">
+            <div class="proof-stat__num">10</div>
+            <div class="proof-stat__label">Services across 5 categories</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Intro -->
-    <section class="services-intro container">
-      <h2 class="section-title">Discover Our Services</h2>
-
-      <p class="about__text">
-        Neider-Ball Designs helps small businesses on the Mississippi Gulf Coast
-        grow through modern websites, time-saving automations, and custom
-        software tools. Whether you need a professional online presence or
-        systems that remove repetitive work from your day, I build technology
-        designed for real business results.
-      </p>
-    </section>
-
-    <!-- Filter Buttons -->
-    <section class="filters container">
-      <div
-        id="filter-buttons"
-        class="filter-controls"
-        role="group"
-        aria-label="Filter Services"
-      >
-        <button type="button" class="filter-button active" data-filter="all">
-          All
-        </button>
-
-        <button type="button" class="filter-button" data-filter="website">
-          Website
-        </button>
-
-        <button type="button" class="filter-button" data-filter="automation">
-          Automations
-        </button>
-
-        <button type="button" class="filter-button" data-filter="custom">
-          Custom
-        </button>
-
-        <button type="button" class="filter-button" data-filter="support">
-          Support
-        </button>
-
-        <button type="button" class="filter-button" data-filter="consulting">
-          Consulting
-        </button>
-      </div>
-    </section>
-
-    <!-- Services Grid -->
-    <main
-      class="service-grid container"
-      id="services"
-      role="main"
-      aria-live="polite"
+    <!-- ═══════════════════════════
+         FILTER BAR
+    ═══════════════════════════ -->
+    <div
+      class="filter-bar"
+      role="navigation"
+      aria-label="Filter services by category"
     >
-      <!-- Dynamic cards injected via services.js -->
-    </main>
-
-    <!-- Process -->
-    <section class="services-process container">
-      <h2 class="section-title">How It Works</h2>
-
-      <div class="process-steps">
-        <div class="process-step">
-          <h3 class="service-card__title">1. Free Consultation</h3>
-
-          <p class="about__text">
-            We discuss your business goals and identify where technology can
-            save time or improve results.
-          </p>
-        </div>
-
-        <div class="process-step">
-          <h3 class="service-card__title">2. Strategy & Planning</h3>
-
-          <p class="about__text">
-            A clear plan is created outlining the website, automation, or system
-            your business needs.
-          </p>
-        </div>
-
-        <div class="process-step">
-          <h3 class="service-card__title">3. Build & Launch</h3>
-
-          <p class="about__text">
-            Your solution is built, tested, and launched so everything works
-            smoothly.
-          </p>
-        </div>
-
-        <div class="process-step">
-          <h3 class="service-card__title">4. Ongoing Support</h3>
-
-          <p class="about__text">
-            Updates, improvements, and technical help are available as your
-            business grows.
-          </p>
-        </div>
+      <div class="filter-bar__inner" id="filter-buttons">
+        <button class="filter-btn active" data-filter="all">
+          All Services
+        </button>
+        <button class="filter-btn" data-filter="website">Websites</button>
+        <button class="filter-btn" data-filter="automation">Automation</button>
+        <button class="filter-btn" data-filter="custom">Custom Builds</button>
+        <button class="filter-btn" data-filter="support">
+          Care &amp; Support
+        </button>
+        <button class="filter-btn" data-filter="consulting">Consulting</button>
       </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="services-cta container">
-      <h2 class="section-title">Ready to Improve Your Business Technology?</h2>
-
-      <p class="about__text">
-        Schedule a free consultation and discover how modern websites,
-        automation, and custom tools can help your business grow.
-      </p>
-
-      <div class="btn-center">
-        <a href="../../index.html#contact" class="btn btn--primary">
-          Schedule Your Free Consultation
-        </a>
-      </div>
-    </section>
-
-    <!-- Back Button -->
-    <div class="back-home">
-      <a href="../../index.html" class="btn btn--secondary"> ← Back to Home </a>
     </div>
 
-    <!-- Footer -->
+    <!-- ═══════════════════════════
+         SERVICES GRID
+    ═══════════════════════════ -->
+    <section class="services-page" aria-label="Services list">
+      <div class="services-page__inner">
+        <p class="services-page__count" id="services-count">
+          Showing all 10 services
+        </p>
+        <div class="services-page__grid" id="services-grid">
+          <!-- Populated by services.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════
+         BOTTOM CTA
+    ═══════════════════════════ -->
+    <section class="services-cta" aria-labelledby="cta-heading">
+      <div class="services-cta__inner">
+        <h2 class="services-cta__title" id="cta-heading">
+          Not sure where to start?
+        </h2>
+        <p class="services-cta__sub">
+          Book a free 30-minute call and I'll tell you honestly what your
+          business needs — even if that's nothing from me right now.
+        </p>
+        <div class="services-cta__btns">
+          <a href="/#contact" class="btn btn--primary">Book a Free Call</a>
+          <a href="/" class="btn btn--inverse">Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════
+         FOOTER
+    ═══════════════════════════ -->
     <footer class="footer" role="contentinfo">
-      <p class="footer__text">
-        © 2025 Neider-Ball Designs | Gulfport, Mississippi
-      </p>
-
-      <div class="footer__contact">
-        <p>Phone: <a href="tel:+1234567890">251-230-2353</a></p>
-
+      <div class="footer__inner">
+        <div class="footer__brand-col">
+          <p class="footer__brand">
+            Neider-Ball <span class="footer__brand-accent">Designs</span>
+          </p>
+          <p class="footer__tagline">
+            Web &amp; tech for Gulf Coast small businesses.<br />
+            Built with care, delivered with clarity.
+          </p>
+        </div>
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <a href="/#about">About</a>
+          <a href="/services.html">Services</a>
+          <a href="/#process">How It Works</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+        <div class="footer__contact-col">
+          <a href="tel:+12512302353">251-230-2353</a>
+          <a href="mailto:neiderballgroup@gmail.com"
+            >neiderballgroup@gmail.com</a
+          >
+        </div>
+      </div>
+      <div class="footer__bottom">
         <p>
-          Email:
-          <a href="mailto:hello@neiderball.com">neiderballgroup@gmail.com</a>
+          &copy; 2026 Neider-Ball Designs &middot; Serving Gulfport &amp; the
+          Mississippi Gulf Coast
         </p>
       </div>
     </footer>

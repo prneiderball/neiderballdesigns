@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Neider-Ball Designs | Web & Tech Solutions</title>
+    <title>Neider-Ball Designs | Web &amp; Tech Solutions</title>
     <meta
       name="description"
       content="Neider-Ball Designs helps Gulfport and Mississippi Gulf Coast small businesses build websites, automate tasks, and use modern tech to save time and grow."
@@ -11,10 +11,11 @@
     <link rel="icon" type="image/png" href="/frontend/assets/favicon.png" />
     <link rel="stylesheet" href="./frontend/styles/main.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <script defer src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- GSAP + ScrollTrigger (load before ScrollReveal — JS uses GSAP first, SR as fallback) -->
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"
@@ -23,20 +24,23 @@
       defer
       src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"
     ></script>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"
-    ></script>
+    <script defer src="https://unpkg.com/scrollreveal"></script>
+
     <script defer src="./frontend/scripts/main.js"></script>
   </head>
-  <body>
-    <header class="header">
-      <a href="/" class="header__logo">NB Designs</a>
 
-      <!-- Mobile Toggle -->
+  <body>
+    <!-- ═══════════════════════════
+         HEADER
+    ═══════════════════════════ -->
+    <header class="header" role="banner">
+      <a href="/" class="header__logo">
+        NB <span class="header__logo-accent">Designs</span>
+      </a>
+
       <button
         class="nav__toggle"
-        aria-label="Toggle menu"
+        aria-label="Toggle navigation menu"
         aria-expanded="false"
         aria-controls="main-navigation"
       >
@@ -45,71 +49,215 @@
         <span class="nav__toggle-line"></span>
       </button>
 
-      <nav class="nav" id="main-navigation">
+      <nav class="nav" id="main-navigation" aria-label="Main navigation">
         <ul class="nav__list">
+          <li><a href="#about" class="nav__link">About</a></li>
+          <li><a href="#services" class="nav__link">Services</a></li>
+          <li><a href="#process" class="nav__link">How It Works</a></li>
           <li>
-            <a href="#about" class="nav__link">About</a>
-          </li>
-
-          <li>
-            <a href="./frontend/pages/services.html" class="nav__link"
-              >Services</a
-            >
-          </li>
-
-          <li>
-            <a href="#contact" class="nav__link">Contact</a>
+            <a href="#contact" class="nav__link nav__link--cta">
+              Book a Free Call
+            </a>
           </li>
         </ul>
       </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
+    <!-- ═══════════════════════════
+         HERO
+    ═══════════════════════════ -->
+    <section class="hero" id="hero" aria-labelledby="hero-heading">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__grid-dots" aria-hidden="true"></div>
+
       <div class="hero__content">
-        <h1 class="hero__title">
-          Modern Web & Tech Solutions for Small Businesses
+        <p class="hero__eyebrow">Gulf Coast Web &amp; Tech</p>
+        <h1 class="hero__title" id="hero-heading">
+          Your business,<br />
+          finally <em>online</em><br />
+          &amp; working for you.
         </h1>
         <p class="hero__subtitle">
-          Empowering Gulfport, Biloxi, and Mississippi Gulf Coast businesses
-          with custom websites, streamlined workflows, and smart technology.
+          I build fast websites, smart automations, and reliable tech for small
+          businesses across Gulfport, Biloxi, and the Mississippi Gulf Coast.
         </p>
-        <a href="#contact" class="btn btn--primary">Book a Free Tech Checkup</a>
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--primary"
+            >Book a Free Tech Checkup</a
+          >
+          <a href="#services" class="btn btn--ghost">See What I Offer</a>
+        </div>
+        <p class="hero__trust-note">No contracts. No jargon. Just results.</p>
+      </div>
+
+      <!-- Floating proof card — hidden on mobile via CSS -->
+      <aside class="hero__right" aria-label="Quick facts">
+        <div class="hero__card">
+          <p class="hero__card-label">What I do for you</p>
+          <p class="hero__card-title">
+            Technology that actually fits your business
+          </p>
+          <p class="hero__card-sub">
+            Custom-built, not copy-pasted. Every solution is sized for your
+            goals, your budget, and your customers.
+          </p>
+          <div class="hero__pill-row">
+            <span class="hero__pill">Web Design</span>
+            <span class="hero__pill">Automation</span>
+            <span class="hero__pill">SEO</span>
+            <span class="hero__pill">Hosting</span>
+            <span class="hero__pill">Support</span>
+          </div>
+        </div>
+        <div class="hero__mini-grid">
+          <div class="hero__mini">
+            <span class="hero__mini-num">$0</span>
+            <span class="hero__mini-label"
+              >First consultation, always free</span
+            >
+          </div>
+          <div class="hero__mini">
+            <span class="hero__mini-num">Gulf<br />Coast</span>
+            <span class="hero__mini-label"
+              >Locally based, personally delivered</span
+            >
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ═══════════════════════════
+         TRUST BAR
+    ═══════════════════════════ -->
+    <div class="trust-bar" aria-label="Key selling points">
+      <span class="trust-bar__label">Why businesses choose me</span>
+      <ul class="trust-bar__list">
+        <li class="trust-bar__item">Fast, mobile-friendly websites</li>
+        <li class="trust-bar__item">Time-saving automation</li>
+        <li class="trust-bar__item">Secure &amp; scalable solutions</li>
+        <li class="trust-bar__item">SEO-optimized from day one</li>
+        <li class="trust-bar__item">Ongoing support included</li>
+      </ul>
+    </div>
+
+    <!-- ═══════════════════════════
+         ABOUT
+    ═══════════════════════════ -->
+    <section class="about" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about__grid">
+          <div class="about__body">
+            <p class="section-eyebrow">About Neider-Ball Designs</p>
+            <h2 class="section-title" id="about-heading">
+              Your local tech partner<br />on the Gulf Coast.
+            </h2>
+            <p class="about__text">
+              As a <strong>software engineer</strong> and
+              <strong>technology consultant</strong> based in Gulfport, MS, I
+              work directly with small businesses and startups — no middlemen,
+              no outsourcing.
+            </p>
+            <p class="about__text">
+              Whether you're launching your first website, refreshing an old
+              one, or need custom software to streamline your workflow, I
+              deliver <strong>secure, scalable digital solutions</strong>
+              tailored to your goals and built to grow with you.
+            </p>
+            <p class="about__text">
+              You deal with me, start to finish. That's the whole promise.
+            </p>
+
+            <div class="about__stats">
+              <div class="stat-card">
+                <span class="stat-card__num">100%</span>
+                <span class="stat-card__label"
+                  >Locally based &amp; hands-on</span
+                >
+              </div>
+              <div class="stat-card">
+                <span class="stat-card__num">$0</span>
+                <span class="stat-card__label"
+                  >Cost for your first consultation</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="about__visual">
+            <div class="about__card">
+              <p class="about__card-title">
+                What you can expect working with me
+              </p>
+              <ul class="about__checklist">
+                <li>
+                  <span class="about__check" aria-hidden="true">✓</span>
+                  Clear timelines — you'll always know what's happening and when
+                </li>
+                <li>
+                  <span class="about__check" aria-hidden="true">✓</span>
+                  Plain-English communication — no confusing technical jargon
+                </li>
+                <li>
+                  <span class="about__check" aria-hidden="true">✓</span>
+                  Solutions tailored to your business, not copy-pasted templates
+                </li>
+                <li>
+                  <span class="about__check" aria-hidden="true">✓</span>
+                  Full handover with training so you stay in control
+                </li>
+                <li>
+                  <span class="about__check" aria-hidden="true">✓</span>
+                  Ongoing support — I don't disappear after launch
+                </li>
+                <li>
+                  <span class="about__check" aria-hidden="true">✓</span>
+                  Built for speed, security, and search engines from day one
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- About -->
-    <section class="about" id="about">
+    <!-- ═══════════════════════════
+         SERVICES
+    ═══════════════════════════ -->
+    <section class="services" id="services" aria-labelledby="services-heading">
       <div class="container">
-        <h2 class="section-title">Digital Solutions to Grow Your Business</h2>
-        <p class="about__text">
-          As a <strong>software engineer</strong> and
-          <strong>technology consultant</strong> in Gulfport, MS, I empower
-          small businesses and startups with
-          <strong>fast, mobile-friendly websites</strong>,
-          <strong>time-saving automation</strong>, and
-          <strong>consistent tools</strong> to boost your online presence and
-          stay ahead.
+        <p class="section-eyebrow">Services &amp; Pricing</p>
+        <h2 class="section-title" id="services-heading">
+          Exactly what you need.<br />Nothing you don't.
+        </h2>
+        <p class="section-lead">
+          Transparent pricing. No hidden fees. Every package is built around
+          your business goals.
         </p>
-        <p class="about__text">
-          Whether you're launching your first website, refreshing an existing
-          one, or need custom software for your business, I deliver
-          <strong>secure, scalable </strong> digital solutions tailored to your
-          goals and built to grow with you.
-        </p>
-      </div>
-    </section>
 
-    <!-- Services -->
-    <section class="services" id="services">
-      <div class="container">
-        <h2 class="section-title">My Services</h2>
         <div class="services__grid">
-          <div class="service-card">
+          <!-- Website -->
+          <article
+            class="service-card"
+            aria-label="Professional Website service"
+          >
+            <div class="service-card__icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M8 21h8M12 17v4" />
+              </svg>
+            </div>
             <h3 class="service-card__title">Professional Website</h3>
             <p class="service-card__price">
               <span class="price">Starting from $350</span>
             </p>
+            <hr class="service-card__divider" />
             <ul class="service-card__list">
               <li>One-page or multi-page site tailored to your needs</li>
               <li>Contact forms so customers can reach you easily</li>
@@ -117,89 +265,340 @@
               <li>Optimized for search engines so customers can find you</li>
               <li>Styled to match your brand and vision</li>
             </ul>
-          </div>
+            <div class="service-card__cta">
+              <a href="#contact" class="btn btn--ghost btn--full"
+                >Get a Quote</a
+              >
+            </div>
+          </article>
 
-          <div class="service-card">
+          <!-- Automation — featured -->
+          <article
+            class="service-card service-card--featured"
+            aria-label="Basic Automation Setup service"
+          >
+            <span class="service-card__badge">Most Popular</span>
+            <div
+              class="service-card__icon service-card__icon--trust"
+              aria-hidden="true"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+              </svg>
+            </div>
             <h3 class="service-card__title">Basic Automation Setup</h3>
             <p class="service-card__price">
               <span class="price">Starting from $500</span>
             </p>
+            <hr class="service-card__divider" />
             <ul class="service-card__list">
               <li>Automations handle forms, emails, and scheduling for you</li>
               <li>Spend less time on repetitive tasks</li>
               <li>Focus more on your customers and business growth</li>
               <li>Training and support included</li>
-              <li>We handle the tech setup for you</li>
+              <li>We handle the full tech setup for you</li>
             </ul>
-          </div>
+            <div class="service-card__cta">
+              <a href="#contact" class="btn btn--trust btn--full"
+                >Get a Quote</a
+              >
+            </div>
+          </article>
 
-          <div class="service-card">
+          <!-- Care Plan -->
+          <article class="service-card" aria-label="Launch Care Plan service">
+            <div class="service-card__icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
             <h3 class="service-card__title">Launch Care Plan</h3>
             <p class="service-card__price">
               <span class="price">$125/mo</span>
             </p>
+            <hr class="service-card__divider" />
             <ul class="service-card__list">
               <li>Hosting and security for your website</li>
               <li>Performance monitoring to keep your site running smoothly</li>
               <li>Regular updates and backups</li>
-              <li>No tech headaches—everything handled for you</li>
+              <li>No tech headaches — everything handled for you</li>
               <li>Peace of mind for newly launched websites</li>
             </ul>
-          </div>
+            <div class="service-card__cta">
+              <a href="#contact" class="btn btn--ghost btn--full"
+                >Get a Quote</a
+              >
+            </div>
+          </article>
         </div>
-        <div class="btn-center">
-          <a href="./frontend/pages/services.html" class="btn btn--secondary"
-            >View All Packages</a
+
+        <div class="services__footer">
+          <a href="./frontend/pages/services.html" class="btn btn--primary">
+            View All Packages &amp; Add-Ons
+          </a>
+          <p class="services__footer-note">
+            Not sure which fits?
+            <a href="#contact" class="services__footer-link"
+              >Book a free call</a
+            >
+            and we'll figure it out together.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════
+         PROCESS
+    ═══════════════════════════ -->
+    <section class="process" id="process" aria-labelledby="process-heading">
+      <div class="container">
+        <p class="section-eyebrow">How It Works</p>
+        <h2 class="section-title" id="process-heading">
+          Simple. Clear. No surprises.
+        </h2>
+        <p class="section-lead">
+          From first chat to launch day — here's exactly what working together
+          looks like.
+        </p>
+
+        <ol class="process__steps" aria-label="Our process steps">
+          <li class="process__step">
+            <div class="process__num" aria-hidden="true">01</div>
+            <h3 class="process__step-title">Free Consultation</h3>
+            <p class="process__step-text">
+              We talk through your goals, budget, and what success looks like
+              for your business.
+            </p>
+          </li>
+          <li class="process__step">
+            <div class="process__num" aria-hidden="true">02</div>
+            <h3 class="process__step-title">Custom Proposal</h3>
+            <p class="process__step-text">
+              Clear scope, fixed price, and a real timeline — no hidden costs,
+              ever.
+            </p>
+          </li>
+          <li class="process__step">
+            <div class="process__num" aria-hidden="true">03</div>
+            <h3 class="process__step-title">Build &amp; Collaborate</h3>
+            <p class="process__step-text">
+              I build while keeping you in the loop with feedback at every
+              stage.
+            </p>
+          </li>
+          <li class="process__step">
+            <div class="process__num" aria-hidden="true">04</div>
+            <h3 class="process__step-title">Launch &amp; Support</h3>
+            <p class="process__step-text">
+              We go live together. I stick around to make sure everything runs
+              smoothly.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════
+         CONTACT
+    ═══════════════════════════ -->
+    <section class="contact" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <p class="section-eyebrow">Get in Touch</p>
+        <h2 class="section-title" id="contact-heading">
+          Let's build something great.
+        </h2>
+
+        <div class="contact__grid">
+          <!-- Left: info -->
+          <div class="contact__info">
+            <div class="contact__info-item">
+              <div class="contact__info-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <p class="contact__info-label">Phone</p>
+                <a href="tel:+12512302353" class="contact__info-value"
+                  >251-230-2353</a
+                >
+              </div>
+            </div>
+
+            <div class="contact__info-item">
+              <div class="contact__info-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </div>
+              <div>
+                <p class="contact__info-label">Email</p>
+                <a
+                  href="mailto:neiderballgroup@gmail.com"
+                  class="contact__info-value"
+                >
+                  neiderballgroup@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div class="contact__info-item">
+              <div class="contact__info-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div>
+                <p class="contact__info-label">Location</p>
+                <span class="contact__info-value">
+                  Gulfport, MS — Serving the Gulf Coast
+                </span>
+              </div>
+            </div>
+
+            <div class="contact__guarantee">
+              <p class="contact__guarantee-title">
+                &#128274; No-pressure promise
+              </p>
+              <p class="contact__guarantee-text">
+                Your free consultation is just a conversation — no commitment,
+                no sales pitch. Just honest advice on what technology can do for
+                your business.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right: form -->
+          <form
+            class="contact__form"
+            aria-label="Contact form"
+            netlify
+            name="contact"
+            method="POST"
+          >
+            <!-- Netlify hidden field -->
+            <input type="hidden" name="form-name" value="contact" />
+
+            <div class="contact__form-row">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+                class="contact__input"
+                autocomplete="name"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                class="contact__input"
+                autocomplete="email"
+              />
+            </div>
+
+            <input
+              type="text"
+              name="business"
+              placeholder="Business Name (optional)"
+              class="contact__input"
+              autocomplete="organization"
+            />
+
+            <textarea
+              name="message"
+              placeholder="Tell me a little about your business and what you're looking to build or improve..."
+              required
+              class="contact__textarea"
+            ></textarea>
+
+            <div class="contact__submit-row">
+              <button type="submit" class="btn btn--primary">
+                Send Message &#8594;
+              </button>
+              <p class="contact__privacy">Your info is never shared. Ever.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════
+         FOOTER
+    ═══════════════════════════ -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer__inner">
+        <div class="footer__brand-col">
+          <p class="footer__brand">
+            Neider-Ball <span class="footer__brand-accent">Designs</span>
+          </p>
+          <p class="footer__tagline">
+            Web &amp; tech for Gulf Coast small businesses.<br />
+            Built with care, delivered with clarity.
+          </p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#process">How It Works</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="footer__contact-col">
+          <a href="tel:+12512302353">251-230-2353</a>
+          <a href="mailto:neiderballgroup@gmail.com"
+            >neiderballgroup@gmail.com</a
           >
         </div>
       </div>
-    </section>
 
-    <!-- Contact -->
-    <section class="contact" id="contact">
-      <div class="container">
-        <h2 class="section-title">Get in Touch</h2>
-        <form class="contact__form" aria-label="Contact form" netlify>
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            required
-            class="contact__input"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            required
-            class="contact__input"
-          />
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            required
-            class="contact__textarea"
-          ></textarea>
-          <button type="submit" class="btn btn--primary">
-            <span>Send Message</span>
-          </button>
-        </form>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer__container">
-        <p class="footer__text">
-          &copy; 2025 Neider-Ball Designs | Serving Gulfport & the Mississippi
-          Gulf Coast
-        </p>
-      </div>
-      <div class="footer__contact">
-        <p>Phone: <a href="tel:+1234567890">251-230-2353</a></p>
+      <div class="footer__bottom">
         <p>
-          Email:
-          <a href="mailto:hello@neiderball.com">neiderballgroup@gmail.com</a>
+          &copy; 2026 Neider-Ball Designs &middot; Serving Gulfport &amp; the
+          Mississippi Gulf Coast
         </p>
       </div>
     </footer>
