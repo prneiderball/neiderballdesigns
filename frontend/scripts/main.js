@@ -343,7 +343,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* ── Submit handler ── */
     form.addEventListener("submit", async (e) => {
-      /* Let Netlify handle it if the attribute is present */
+      e.preventDefault();
+
       const isNetlify =
         form.hasAttribute("netlify") || form.hasAttribute("data-netlify");
 
@@ -359,15 +360,31 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      /* If not Netlify, handle manually (add your own endpoint) */
-      if (!isNetlify) {
-        e.preventDefault();
-        setFormLoading(true);
+      setFormLoading(true);
 
+      if (isNetlify) {
+        /* POST as URL-encoded — exactly what Netlify's bot expects */
         try {
-          await new Promise((r) =>
-            setTimeout(r, 1200)
-          ); /* swap for real fetch() */
+          const res = await fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(new FormData(form)).toString()
+          });
+
+          if (res.ok) {
+            setFormSuccess();
+          } else {
+            setFormError();
+          }
+        } catch {
+          setFormError();
+        } finally {
+          setFormLoading(false);
+        }
+      } else {
+        /* Non-Netlify: swap the promise below for your own fetch() */
+        try {
+          await new Promise((r) => setTimeout(r, 1200));
           setFormSuccess();
         } catch {
           setFormError();
