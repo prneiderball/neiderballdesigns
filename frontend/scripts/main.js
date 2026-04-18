@@ -341,8 +341,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
-    /* ── Submit handler (Netlify-safe) ── */
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
       let valid = true;
 
       inputs.forEach((input) => {
@@ -352,20 +353,37 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if (!valid) {
-        e.preventDefault(); // ONLY stop submission if invalid
         const firstError = form.querySelector(".contact__input--error");
         if (firstError) firstError.focus();
         return;
       }
 
-      // Optional: show loading state (pure UX, does NOT block submission)
+      // Loading state
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.textContent = "Sending…";
       }
 
-      // IMPORTANT: do NOT preventDefault here
-      // Let Netlify handle the submission naturally
+      try {
+        const response = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(new FormData(form)).toString()
+        });
+
+        if (response.ok) {
+          setFormSuccess();
+        } else {
+          setFormError();
+        }
+      } catch (err) {
+        setFormError();
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Send Message";
+        }
+      }
     });
 
     const setFormLoading = (loading) => {
