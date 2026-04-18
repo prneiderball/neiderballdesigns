@@ -341,57 +341,31 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
-    /* ── Submit handler ── */
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const isNetlify =
-        form.hasAttribute("netlify") || form.hasAttribute("data-netlify");
-
-      /* Always validate first */
+    /* ── Submit handler (Netlify-safe) ── */
+    form.addEventListener("submit", (e) => {
       let valid = true;
+
       inputs.forEach((input) => {
-        if (input.required && !validateField(input)) valid = false;
+        if (input.required && !validateField(input)) {
+          valid = false;
+        }
       });
 
       if (!valid) {
+        e.preventDefault(); // ONLY stop submission if invalid
         const firstError = form.querySelector(".contact__input--error");
         if (firstError) firstError.focus();
         return;
       }
 
-      setFormLoading(true);
-
-      if (isNetlify) {
-        /* POST as URL-encoded — exactly what Netlify's bot expects */
-        try {
-          const res = await fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(new FormData(form)).toString()
-          });
-
-          if (res.ok) {
-            setFormSuccess();
-          } else {
-            setFormError();
-          }
-        } catch {
-          setFormError();
-        } finally {
-          setFormLoading(false);
-        }
-      } else {
-        /* Non-Netlify: swap the promise below for your own fetch() */
-        try {
-          await new Promise((r) => setTimeout(r, 1200));
-          setFormSuccess();
-        } catch {
-          setFormError();
-        } finally {
-          setFormLoading(false);
-        }
+      // Optional: show loading state (pure UX, does NOT block submission)
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
       }
+
+      // IMPORTANT: do NOT preventDefault here
+      // Let Netlify handle the submission naturally
     });
 
     const setFormLoading = (loading) => {
